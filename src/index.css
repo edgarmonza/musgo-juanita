@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background - White clean */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 21%;
+
+    /* Cards - pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 21%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 21%;
+
+    /* Primary - #689b61 Gray Green */
+    --primary: 114 23% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - #eeeeee Light Gray */
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 21%;
+
+    /* Muted - Light Gray */
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - Green lighter */
+    --accent: 114 20% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 114 23% 49%;
+
+    --radius: 0.5rem;
+
+    /* Custom brand tokens - Musgo Manual */
+    --musgo: 114 23% 49%;
+    --musgo-light: 114 20% 58%;
+    --dark-gray: 0 0% 21%;
+    --light-gray: 0 0% 93%;
+
+    /* Typography */
+    --font-display: 'Bebas Neue', 'Impact', sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 30px -4px hsl(0 0% 21% / 0.06);
+    --shadow-elegant: 0 20px 60px -15px hsl(0 0% 21% / 0.1);
+
+    /* Sidebar tokens */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 21%;
+    --sidebar-primary: 114 23% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 93%;
+    --sidebar-accent-foreground: 0 0% 21%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 114 23% 49%;
+  }
+
+  .dark {
+    --background: 0 0% 13%;
+    --foreground: 0 0% 93%;
+
+    --card: 0 0% 16%;
+    --card-foreground: 0 0% 93%;
+
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 93%;
+
+    --primary: 114 23% 55%;
+    --primary-foreground: 0 0% 13%;
+
+    --secondary: 0 0% 21%;
+    --secondary-foreground: 0 0% 93%;
+
+    --muted: 0 0% 21%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 114 20% 45%;
+    --accent-foreground: 0 0% 93%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 93%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 114 23% 55%;
+
+    --sidebar-background: 0 0% 13%;
+    --sidebar-foreground: 0 0% 93%;
+    --sidebar-primary: 114 23% 55%;
+    --sidebar-primary-foreground: 0 0% 13%;
+    --sidebar-accent: 0 0% 21%;
+    --sidebar-accent-foreground: 0 0% 93%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 114 23% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight uppercase;
+  }
+}
+
+@layer components {
+  /* Editorial section spacing - LUXURY breathing room (200% increase) */
+  .section-editorial {
+    @apply py-32 md:py-40 lg:py-56;
+  }
+
+  /* Premium card style */
+  .card-premium {
+    @apply bg-card border border-border p-10 md:p-14;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Subtle grain texture overlay */
+  .texture-grain {
+    position: relative;
+  }
+
+  .texture-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.02;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Elegant link underline */
+  .link-elegant {
+    @apply relative inline-block;
+  }
+
+  .link-elegant::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-current scale-x-0 origin-right transition-transform duration-500;
+  }
+
+  .link-elegant:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Image hover effect */
+  .img-hover {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .img-hover:hover {
+    @apply scale-105;
+  }
+
+  /* Editorial button styles */
+  .btn-editorial {
+    @apply border border-primary text-primary bg-transparent px-8 py-4 text-sm uppercase tracking-widest font-medium;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .btn-editorial:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-serif {
+    font-family: var(--font-display);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Editorial text sizes - BRUTAL scale */
+  .text-display {
+    @apply text-6xl md:text-8xl lg:text-9xl leading-none tracking-tight uppercase;
+    font-family: var(--font-display);
+  }
+
+  .text-headline {
+    @apply text-4xl md:text-5xl lg:text-6xl leading-none tracking-tight uppercase;
+    font-family: var(--font-display);
+  }
+
+  .text-subhead {
+    @apply text-xl md:text-2xl leading-relaxed;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-xs leading-relaxed tracking-widest uppercase;
+  }
+
+  /* Brand colors as utilities */
+  .text-dark-gray {
+    color: hsl(var(--dark-gray));
+  }
+
+  .bg-light-gray {
+    background-color: hsl(var(--light-gray));
+  }
+
+  .text-musgo {
+    color: hsl(var(--musgo));
+  }
+
+  .bg-musgo {
+    background-color: hsl(var(--musgo));
+  }
+
+  .border-musgo {
+    border-color: hsl(var(--musgo));
+  }
+}
