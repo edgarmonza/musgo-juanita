@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import mossHero from "@/assets/moss-hero.jpg";
+import doselHero from "@/assets/dosel-hero.jpg";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,28 +9,31 @@ export default function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.5, 0.8]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.2, 0.55]);
 
   return (
     <section ref={containerRef} className="h-screen relative overflow-hidden">
-      {/* Background Image - Full Screen with Parallax */}
+      {/* Background Image - Dosel (canopy) with Parallax */}
       <motion.div style={{ scale: imageScale }} className="absolute inset-0">
         <img
-          src={mossHero}
-          alt="Musgo — Transiciones regenerativas"
+          src={doselHero}
+          alt="Luz filtrándose por el dosel del bosque — Musgo"
           className="w-full h-full object-cover"
         />
       </motion.div>
 
-      {/* Dark Overlay */}
+      {/* Subtle overlay — lets canopy light breathe */}
       <motion.div
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 bg-black"
       />
 
-      {/* Gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40" />
+      {/* Radial glow — mimics light filtering through the canopy center */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,transparent_20%,rgba(0,0,0,0.4)_70%)]" />
+
+      {/* Bottom gradient for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-24">
