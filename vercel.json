@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/branding.html", "destination": "/branding.html" },
+    { "source": "/((?!assets|favicon|og-image|robots|branding).*)", "destination": "/index.html" }
+  ]
+}
