@@ -42,7 +42,7 @@ export default function ContactoPage() {
                   const name = (form.elements.namedItem("name") as HTMLInputElement).value;
                   const email = (form.elements.namedItem("email") as HTMLInputElement).value;
                   const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
-                  window.location.href = `mailto:hola@musgo.io?subject=Contacto de ${name}&body=${encodeURIComponent(message)}%0A%0ADesde: ${encodeURIComponent(email)}`;
+                  window.location.href = `mailto:juanita@musgo.space?subject=Contacto de ${name}&body=${encodeURIComponent(message)}%0A%0ADesde: ${encodeURIComponent(email)}`;
                 }}
                 className="space-y-8"
               >
@@ -119,10 +119,10 @@ export default function ContactoPage() {
                   Email directo
                 </p>
                 <a
-                  href="mailto:hola@musgo.io"
+                  href="mailto:juanita@musgo.space"
                   className="text-foreground hover:text-primary transition-colors duration-300 link-elegant"
                 >
-                  hola@musgo.io
+                  juanita@musgo.space
                 </a>
               </div>
 

@@ -62,7 +62,7 @@ export default function Footer() {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="mailto:hola@musgo.io"
+              href="mailto:juanita@musgo.space"
               className="text-white/40 hover:text-white transition-colors duration-300"
               aria-label="Email"
             >
