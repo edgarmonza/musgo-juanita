@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const proyectos = [
   {
-    name: "Terrazos",
+    name: "Terrasos",
     role: "Directora estratégica",
     description: "Empresa de 60 personas en innovación social y ambiental. Acompañamiento estratégico de 18 meses: estructura de liderazgo, gobernanza y transición organizacional.",
     status: "En curso",

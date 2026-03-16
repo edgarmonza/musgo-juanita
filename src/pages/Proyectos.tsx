@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const proyectos = [
   {
-    name: "Terrazos",
+    name: "Terrasos",
     role: "Directora estratégica",
     status: "En curso",
     year: "2026 — presente",
