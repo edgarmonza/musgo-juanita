@@ -470,7 +470,7 @@
 <section id="aplicaciones" class="section">
   <p class="section-label">07 — Aplicaciones</p>
   <h2 class="section-title">Así se ve Musgo<br>en el mundo real.</h2>
-  <p class="section-desc">Piezas listas para usar. Cada una viene en 3 fondos: <strong style="color:#fff;">oscuro</strong>, <strong style="color:#d4c8b8;">crema</strong> y <strong style="color:#689b61;">verde</strong>. Descarga el PNG y úsalo directo.</p>
+  <p class="section-desc">Piezas listas para usar. Cada una viene en 4 fondos: <strong style="color:#fff;">oscuro</strong>, <strong style="color:#d4c8b8;">crema</strong>, <strong style="color:#689b61;">verde</strong> y <strong style="background:linear-gradient(90deg,#1a3a17,#689b61,#c8d8c0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">degradé</strong>. Descarga el PNG y úsalo directo.</p>
 
   <div style="margin-top:2rem;padding:1.5rem 2rem;border-radius:12px;background:rgba(104,155,97,0.06);border:1px solid rgba(104,155,97,0.12);">
     <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#689b61;margin-bottom:0.75rem;font-weight:500;">Cómo usar estas piezas</p>
@@ -480,7 +480,7 @@
       <li>→ <strong style="color:rgba(255,255,255,0.7);">Citas editables:</strong> El texto dice "Tu frase va aquí" — abre el PNG en Canva o cualquier editor y cambia el texto.</li>
       <li>→ <strong style="color:rgba(255,255,255,0.7);">Slide keynote:</strong> Úsala como primera diapositiva en presentaciones.</li>
       <li>→ <strong style="color:rgba(255,255,255,0.7);">Firma email:</strong> Recorta y pega como imagen en la configuración de firma de tu correo.</li>
-      <li>→ <strong style="color:rgba(255,255,255,0.7);">¿Qué fondo usar?</strong> Oscuro para LinkedIn/presentaciones. Crema para correos/documentos. Verde para destacar.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">¿Qué fondo usar?</strong> Oscuro para LinkedIn/presentaciones. Crema para correos/documentos. Verde para destacar. Degradé para piezas premium o portadas.</li>
     </ul>
   </div>
 
@@ -509,7 +509,7 @@
     font-size: 11px; color: rgba(255,255,255,0.2); font-family: 'SF Mono', monospace;
     margin-bottom: 1.5rem;
   }
-  .variants-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .variants-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
   @media (max-width: 900px) { .variants-row { grid-template-columns: 1fr; } }
   .variant-col {}
   .variant-label {
@@ -532,7 +532,8 @@
   const THEMES = {
     dark:  { bg: '#000000', text: '#ffffff', accent: '#689b61', muted: 'rgba(255,255,255,0.35)', mutedMore: 'rgba(255,255,255,0.2)', label: 'Oscuro' },
     cream: { bg: '#eeeeee', text: '#353535', accent: '#689b61', muted: 'rgba(53,53,53,0.45)', mutedMore: 'rgba(53,53,53,0.25)', label: 'Crema' },
-    green: { bg: '#689b61', text: '#ffffff', accent: '#ffffff', muted: 'rgba(255,255,255,0.6)', mutedMore: 'rgba(255,255,255,0.35)', label: 'Verde' }
+    green: { bg: '#689b61', text: '#ffffff', accent: '#ffffff', muted: 'rgba(255,255,255,0.6)', mutedMore: 'rgba(255,255,255,0.35)', label: 'Verde' },
+    gradient: { bg: 'linear-gradient(135deg, #0a0a0a 0%, #1a3a17 30%, #689b61 65%, #c8d8c0 100%)', text: '#ffffff', accent: '#c8d8c0', muted: 'rgba(255,255,255,0.55)', mutedMore: 'rgba(255,255,255,0.3)', label: 'Degradé', isGradient: true }
   };
 
   const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>';
@@ -546,26 +547,27 @@
     // ─── LINKEDIN BANNER 1584×396 ───
     { category: 'LinkedIn Banner', w: 1584, h: 396, cls: 'lb', designs: [
       { name: 'Banner — Logo + Tagline', render: (t) => `
-        <div style="width:1584px;height:396px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:110px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
-          <div style="font-size:13px;letter-spacing:0.35em;text-transform:uppercase;color:${t.muted};margin-top:10px;">Transiciones Regenerativas</div>
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:120px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:240px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
+          <div style="font-size:34px;letter-spacing:0.35em;text-transform:uppercase;color:${t.muted};margin-top:18px;">Transiciones Regenerativas</div>
         </div>`},
       { name: 'Banner — Nombre + Web', render: (t) => `
-        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;justify-content:space-between;padding:0 120px;">
-          <div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
-            <div style="font-size:13px;color:${t.muted};font-weight:300;margin-top:8px;">Juanita López Peláez</div>
-          </div>
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;justify-content:flex-end;padding:0 120px;gap:50px;">
           <div style="text-align:right;">
-            <div style="font-size:13px;color:${t.muted};font-weight:300;line-height:1.7;">Transiciones regenerativas para<br>organizaciones, equipos y personas.</div>
-            <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:${t.accent};margin-top:12px;">musgo.space</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:150px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
+            <div style="font-size:28px;color:${t.muted};font-weight:300;margin-top:12px;">Juanita López Peláez</div>
+          </div>
+          <div style="width:2px;height:100px;background:${t.mutedMore};"></div>
+          <div style="text-align:right;">
+            <div style="font-size:28px;color:${t.muted};font-weight:300;line-height:1.7;">Transiciones regenerativas para<br>organizaciones, equipos y personas.</div>
+            <div style="font-size:24px;letter-spacing:0.15em;text-transform:uppercase;color:${t.accent};margin-top:14px;">musgo.space</div>
           </div>
         </div>`},
       { name: 'Banner — Minimal', render: (t) => `
-        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;padding:0 120px;gap:40px;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
-          <div style="width:1px;height:50px;background:${t.mutedMore};"></div>
-          <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:${t.muted};">Juanita López Peláez · Transiciones Regenerativas</div>
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;justify-content:flex-end;padding:0 120px;gap:50px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:140px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
+          <div style="width:2px;height:85px;background:${t.mutedMore};"></div>
+          <div style="font-size:30px;letter-spacing:0.15em;text-transform:uppercase;color:${t.muted};">Juanita López Peláez · Transiciones Regenerativas</div>
         </div>`}
     ]},
 
