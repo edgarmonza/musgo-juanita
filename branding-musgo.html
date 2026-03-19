@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Marca — Musgo · Monza Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- html2canvas for PNG export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0a0a0a; color: #e0e0e0;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.88); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px; padding: 0 2rem;
+  }
+  .nav-brand { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .nav-brand strong { color: rgba(255,255,255,0.65); }
+  .nav-links { display: flex; gap: 0.25rem; }
+  .nav-links a {
+    padding: 0.4rem 0.85rem; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); text-decoration: none; border-radius: 6px; transition: all 0.2s;
+  }
+  .nav-links a:hover { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.04); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* SHARED */
+  .section {
+    max-width: 1100px; margin: 0 auto; padding: 6rem 2rem;
+    scroll-margin-top: 60px;
+  }
+  .section-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #689b61; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #fff; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    font-size: 0.95rem; color: rgba(255,255,255,0.4); font-weight: 300;
+    max-width: 600px; line-height: 1.8;
+  }
+  .divider { height: 1px; background: rgba(255,255,255,0.06); max-width: 1100px; margin: 0 auto; }
+
+  /* DOWNLOAD BTN */
+  .dl-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 0.75rem; padding: 0.5rem 1rem;
+    background: rgba(104,155,97,0.12); border: 1px solid rgba(104,155,97,0.25);
+    border-radius: 8px; color: #689b61; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .dl-btn:hover { background: rgba(104,155,97,0.2); border-color: rgba(104,155,97,0.4); }
+  .dl-btn svg { width: 12px; height: 12px; }
+  .dl-btn.downloading { opacity: 0.5; pointer-events: none; }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    padding: 6rem 2rem; position: relative;
+    background: radial-gradient(ellipse at 50% 60%, rgba(104,155,97,0.06) 0%, transparent 60%),
+                linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+  }
+  .cover-label {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); margin-bottom: 3rem;
+  }
+  .cover-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(6rem, 16vw, 14rem);
+    line-height: 0.82; letter-spacing: -0.03em;
+    color: #fff; text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .cover-sub {
+    font-size: 0.9rem; color: rgba(255,255,255,0.3); font-weight: 300;
+    line-height: 1.8; margin-bottom: 3rem;
+  }
+  .cover-badge {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 1.5rem; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px; font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.25);
+  }
+  .cover-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: #689b61; }
+  .cover::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(180deg, rgba(104,155,97,0.3), transparent);
+  }
+
+  /* 01 ESSENCE */
+  .essence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .essence-grid { grid-template-columns: 1fr; } }
+  .essence-card {
+    padding: 2rem; border-radius: 12px;
+    background: rgba(104,155,97,0.04); border: 1px solid rgba(104,155,97,0.08);
+  }
+  .essence-card h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #689b61;
+    text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .essence-card p { font-size: 0.85rem; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.7; }
+
+  /* 02 LOGO */
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .logo-grid { grid-template-columns: 1fr; } }
+  .logo-box {
+    aspect-ratio: 16/10; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;
+  }
+  .logo-box .logo-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+    line-height: 0.82; letter-spacing: -0.03em; text-transform: uppercase;
+  }
+  .logo-box .logo-sub { font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; margin-top: 0.4rem; }
+  .logo-box .logo-caption {
+    position: absolute; bottom: 0.75rem; left: 0; right: 0; text-align: center;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .logo-dark { background: #0f0f0f; }
+  .logo-dark .logo-text { color: #fff; }
+  .logo-dark .logo-sub { color: rgba(255,255,255,0.35); }
+  .logo-dark .logo-caption { color: rgba(255,255,255,0.2); }
+  .logo-light { background: #f5f5f5; }
+  .logo-light .logo-text { color: #353535; }
+  .logo-light .logo-sub { color: rgba(53,53,53,0.4); }
+  .logo-light .logo-caption { color: rgba(53,53,53,0.3); }
+  .logo-green { background: #689b61; }
+  .logo-green .logo-text { color: #fff; }
+  .logo-green .logo-sub { color: rgba(255,255,255,0.6); }
+  .logo-green .logo-caption { color: rgba(255,255,255,0.4); }
+
+  .clearspace-box {
+    margin-top: 3rem; padding: 3rem; border-radius: 12px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .clearspace-inner {
+    position: relative; display: inline-flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 3rem; border: 1px dashed rgba(104,155,97,0.4);
+  }
+  .clearspace-inner .logo-text {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+    line-height: 0.82; letter-spacing: -0.03em; color: #fff; text-transform: uppercase;
+  }
+  .clearspace-marker {
+    position: absolute; font-size: 8px; color: #689b61;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .clearspace-marker.top { top: 0.5rem; left: 50%; transform: translateX(-50%); }
+  .clearspace-marker.bottom { bottom: 0.5rem; left: 50%; transform: translateX(-50%); }
+  .clearspace-marker.left { left: 0.5rem; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+  .clearspace-marker.right { right: 0.5rem; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+  .donts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+  @media (max-width: 768px) { .donts-grid { grid-template-columns: repeat(2, 1fr); } }
+  .dont-box {
+    aspect-ratio: 1; border-radius: 12px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; position: relative;
+    background: rgba(255,50,50,0.03); border: 1px solid rgba(255,50,50,0.1);
+  }
+  .dont-box .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 0.82; text-transform: uppercase; }
+  .dont-box .dont-label {
+    position: absolute; bottom: 0.75rem; left: 0; right: 0; text-align: center;
+    font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,100,100,0.6);
+  }
+  .dont-box .x-mark { position: absolute; top: 0.75rem; right: 0.75rem; font-size: 14px; color: rgba(255,100,100,0.5); font-weight: 700; }
+
+  /* 03 COLORS */
+  .color-hero { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 768px) { .color-hero { grid-template-columns: 1fr; } }
+  .color-hero-card {
+    border-radius: 16px; padding: 2.5rem; min-height: 200px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .color-hero-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .color-hero-card p { font-size: 0.85rem; font-weight: 300; }
+  .color-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .color-grid { grid-template-columns: repeat(3, 1fr); } }
+  .swatch { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .swatch-color { height: 100px; }
+  .swatch-info { padding: 0.75rem 0.85rem; background: rgba(255,255,255,0.02); }
+  .swatch-name { font-size: 11px; font-weight: 500; margin-bottom: 0.2rem; color: #fff; }
+  .swatch-codes { font-size: 10px; color: rgba(255,255,255,0.3); font-family: 'SF Mono', 'Fira Code', monospace; line-height: 1.6; }
+
+  /* 04 TYPOGRAPHY */
+  .type-specimen {
+    margin-top: 3rem; padding: 3rem; border-radius: 16px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
+  }
+  .type-specimen-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #689b61; margin-bottom: 1.5rem; }
+  .type-scale { margin-top: 3rem; }
+  .type-scale-row {
+    display: flex; align-items: baseline; gap: 2rem;
+    padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .type-scale-label { flex-shrink: 0; width: 100px; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+  .type-scale-sample { flex: 1; color: #fff; }
+
+  /* 05 PHOTOGRAPHY */
+  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .photo-grid { grid-template-columns: 1fr; } }
+  .photo-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .photo-card .photo-visual { height: 180px; display: flex; align-items: center; justify-content: center; }
+  .photo-card .photo-info { padding: 1.25rem; background: rgba(255,255,255,0.02); }
+  .photo-card .photo-info h4 { font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+  .photo-card .photo-info p { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 300; line-height: 1.5; }
+
+  /* 06 VOICE */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .voice-grid { grid-template-columns: 1fr; } }
+  .voice-card { padding: 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+  .voice-card.do { background: rgba(104,155,97,0.05); border-color: rgba(104,155,97,0.15); }
+  .voice-card.dont { background: rgba(255,80,80,0.03); border-color: rgba(255,80,80,0.1); }
+  .voice-card h4 { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+  .voice-card.do h4 { color: #689b61; }
+  .voice-card.dont h4 { color: rgba(255,100,100,0.6); }
+  .voice-card p { font-size: 0.9rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.5); }
+  .voice-card p + p { margin-top: 0.5rem; }
+
+  /* 07 APPLICATIONS — Shared */
+  .mockup-row { margin-top: 3rem; }
+  .mockup-label {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); margin-bottom: 0.75rem;
+  }
+  .mockup-wrapper { position: relative; }
+
+  /* LinkedIn Banners — export-ready containers */
+  .lb-export {
+    width: 1584px; height: 396px; position: relative;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .lb-scaled {
+    transform-origin: top left;
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 0.5rem;
+  }
+  .lb-export .lb-content { position: relative; z-index: 1; padding-left: 80px; }
+  .lb-export .lb-logo {
+    font-family: 'Bebas Neue', sans-serif; line-height: 0.82;
+    letter-spacing: -0.03em; text-transform: uppercase;
+  }
+  .lb-export .lb-tagline { font-family: 'Inter', sans-serif; font-weight: 300; }
+  .lb-export .lb-line { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
+
+  /* LinkedIn Post */
+  .lp-export { width: 1200px; height: 628px; position: relative; overflow: hidden; }
+  .lp-scaled { transform-origin: top left; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 0.5rem; }
+
+  /* IG Post */
+  .ig-export { width: 1080px; height: 1080px; position: relative; overflow: hidden; }
+  .ig-scaled { transform-origin: top left; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 0.5rem; }
+
+  /* Slide */
+  .slide-export { width: 1920px; height: 1080px; position: relative; overflow: hidden; }
+  .slide-scaled { transform-origin: top left; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 0.5rem; }
+
+  /* Email sig */
+  .es-export { width: 600px; overflow: hidden; }
+  .es-scaled { transform-origin: top left; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 0.5rem; }
+
+  /* Grids */
+  .mockups-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .mockups-2col { grid-template-columns: 1fr; } }
+
+  /* FOOTER */
+  .footer {
+    padding: 4rem 2rem; text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer p { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><strong>Monza Lab</strong> · Manual de Marca Musgo</div>
+    <div class="nav-links">
+      <a href="#esencia">Esencia</a>
+      <a href="#logo">Logo</a>
+      <a href="#colores">Colores</a>
+      <a href="#tipografia">Tipografía</a>
+      <a href="#fotografia">Fotografía</a>
+      <a href="#voz">Voz</a>
+      <a href="#aplicaciones">Aplicaciones</a>
+    </div>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <p class="cover-label">Manual de Marca</p>
+  <div class="cover-logo">MUSGO</div>
+  <p class="cover-sub">Juanita López Peláez<br>Transiciones regenerativas para organizaciones, equipos y personas.</p>
+  <div class="cover-badge"><span class="dot"></span>Preparado por Monza Lab · Marzo 2026</div>
+</section>
+
+<!-- 01 ESSENCE -->
+<div class="divider"></div>
+<section id="esencia" class="section">
+  <p class="section-label">01 — Esencia de marca</p>
+  <h2 class="section-title">Lo que crece en silencio<br>transforma lo que parecía inerte.</h2>
+  <p class="section-desc">Musgo es la marca personal de Juanita López Peláez. Nace de la metáfora del musgo: lo que regenera sin imponer, lo que crece donde otros no miran, lo que sostiene ecosistemas completos desde lo invisible.</p>
+  <div class="essence-grid">
+    <div class="essence-card"><h4>Propósito</h4><p>Acompañar la transición entre la estrategia que se proyecta y la transformación que las personas necesitan vivir. Cerrar la brecha entre el cambio situacional y la transición real.</p></div>
+    <div class="essence-card"><h4>Personalidad</h4><p>Seria pero no fría. Natural sin ser naïve. Con raíces profundas y criterio afilado. Cómoda en una junta directiva y en un círculo de confianza.</p></div>
+    <div class="essence-card"><h4>Diferenciador</h4><p>Credenciales duras (KPMG, Fondo Adaptación, Mundo Común) + sensibilidad real. No es coaching genérico — es estrategia con alma, respaldada por evidencia.</p></div>
+  </div>
+</section>
+
+<!-- 02 LOGO -->
+<div class="divider"></div>
+<section id="logo" class="section">
+  <p class="section-label">02 — Logo</p>
+  <h2 class="section-title">Wordmark principal</h2>
+  <p class="section-desc">El logo es la palabra MUSGO en Bebas Neue, con tracking condensado (-0.03em). Las letras van pegadas, compactas — como el musgo que crece denso y unido.</p>
+  <div class="logo-grid">
+    <div class="logo-box logo-dark" id="logo-dark">
+      <div class="logo-text">MUSGO</div>
+      <div class="logo-sub">Juanita López Peláez</div>
+      <div class="logo-caption">Sobre fondo oscuro</div>
+    </div>
+    <div class="logo-box logo-light" id="logo-light">
+      <div class="logo-text">MUSGO</div>
+      <div class="logo-sub">Juanita López Peláez</div>
+      <div class="logo-caption">Sobre fondo claro</div>
+    </div>
+    <div class="logo-box logo-green" id="logo-green">
+      <div class="logo-text">MUSGO</div>
+      <div class="logo-sub">Juanita López Peláez</div>
+      <div class="logo-caption">Sobre color primario</div>
+    </div>
+  </div>
+  <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+    <button class="dl-btn" onclick="download('logo-dark','musgo-logo-oscuro')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Oscuro</button>
+    <button class="dl-btn" onclick="download('logo-light','musgo-logo-claro')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Claro</button>
+    <button class="dl-btn" onclick="download('logo-green','musgo-logo-verde')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Verde</button>
+  </div>
+
+  <h3 style="font-family:'Bebas Neue';font-size:1.5rem;color:#fff;text-transform:uppercase;margin-top:4rem;margin-bottom:0.5rem;">Espacio de respeto</h3>
+  <p style="font-size:0.85rem;color:rgba(255,255,255,0.35);font-weight:300;">El área libre alrededor del logo debe ser mínimo la altura de la letra "M".</p>
+  <div class="clearspace-box">
+    <div class="clearspace-inner">
+      <span class="clearspace-marker top">M</span>
+      <span class="clearspace-marker bottom">M</span>
+      <span class="clearspace-marker left">M</span>
+      <span class="clearspace-marker right">M</span>
+      <div class="logo-text">MUSGO</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Bebas Neue';font-size:1.5rem;color:#fff;text-transform:uppercase;margin-top:4rem;margin-bottom:0.5rem;">Usos incorrectos</h3>
+  <div class="donts-grid">
+    <div class="dont-box"><span class="x-mark">✕</span><div class="logo-text" style="color:#ff6666;letter-spacing:0.2em;">MUSGO</div><div class="dont-label">No separar letras</div></div>
+    <div class="dont-box"><span class="x-mark">✕</span><div class="logo-text" style="color:#fff;transform:skewX(-12deg);">MUSGO</div><div class="dont-label">No distorsionar</div></div>
+    <div class="dont-box"><span class="x-mark">✕</span><div class="logo-text" style="color:#fff;text-shadow:0 0 20px rgba(104,155,97,0.8);">MUSGO</div><div class="dont-label">No agregar glow</div></div>
+    <div class="dont-box"><span class="x-mark">✕</span><div class="logo-text" style="color:#fff;font-family:'Playfair Display',serif;text-transform:none;font-size:1.5rem;">Musgo</div><div class="dont-label">No cambiar tipografía</div></div>
+  </div>
+</section>
+
+<!-- 03 COLORS -->
+<div class="divider"></div>
+<section id="colores" class="section">
+  <p class="section-label">03 — Paleta de colores</p>
+  <h2 class="section-title">Colores de marca</h2>
+  <p class="section-desc">Verde bosque como acento. Negros profundos para impacto. Grises claros para respirar.</p>
+  <div class="color-hero">
+    <div class="color-hero-card" style="background:#689b61;"><h4 style="color:#fff;">Musgo</h4><p style="color:rgba(255,255,255,0.7);">Color primario · Botones, acentos, CTA</p></div>
+    <div class="color-hero-card" style="background:#353535;"><h4 style="color:#fff;">Carbón</h4><p style="color:rgba(255,255,255,0.5);">Texto principal · Headers</p></div>
+  </div>
+  <div class="color-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#689b61;"></div><div class="swatch-info"><div class="swatch-name">Musgo</div><div class="swatch-codes">#689b61<br>HSL 114 23% 49%<br>RGB 104 155 97</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#7fb878;"></div><div class="swatch-info"><div class="swatch-name">Musgo Claro</div><div class="swatch-codes">#7fb878<br>HSL 114 20% 58%<br>RGB 127 184 120</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#353535;"></div><div class="swatch-info"><div class="swatch-name">Carbón</div><div class="swatch-codes">#353535<br>HSL 0 0% 21%<br>RGB 53 53 53</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0f0f0f;"></div><div class="swatch-info"><div class="swatch-name">Noche</div><div class="swatch-codes">#0f0f0f<br>HSL 0 0% 6%<br>RGB 15 15 15</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#eeeeee;"></div><div class="swatch-info"><div class="swatch-name" style="color:#333;">Niebla</div><div class="swatch-codes">#eeeeee<br>HSL 0 0% 93%<br>RGB 238 238 238</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#fff;border-bottom:1px solid rgba(0,0,0,0.06);"></div><div class="swatch-info"><div class="swatch-name" style="color:#333;">Blanco</div><div class="swatch-codes">#ffffff<br>HSL 0 0% 100%<br>RGB 255 255 255</div></div></div>
+  </div>
+</section>
+
+<!-- 04 TYPOGRAPHY -->
+<div class="divider"></div>
+<section id="tipografia" class="section">
+  <p class="section-label">04 — Tipografía</p>
+  <h2 class="section-title">Sistema tipográfico</h2>
+  <p class="section-desc">Dos fuentes. Una grita (Bebas Neue), otra respira (Inter).</p>
+  <div class="type-specimen">
+    <div class="type-specimen-label">Display — Bebas Neue</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,8rem);color:#fff;text-transform:uppercase;line-height:0.85;letter-spacing:-0.03em;">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(255,255,255,0.3);text-transform:uppercase;line-height:1;letter-spacing:-0.02em;margin-top:1.5rem;">0123456789 — !?¿¡@#$%&</div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:1.5rem;font-family:'SF Mono',monospace;">Bebas Neue · Regular 400 · Uppercase only · Tracking: -0.03em · Line-height: 0.85</p>
+  </div>
+  <div class="type-specimen">
+    <div class="type-specimen-label">Body — Inter</div>
+    <div style="font-family:'Inter',sans-serif;font-size:1.5rem;color:#fff;font-weight:300;line-height:1.6;">Acompaño la transición entre la estrategia que proyectas y la transformación que tu equipo necesita vivir.</div>
+    <div style="font-family:'Inter',sans-serif;color:rgba(255,255,255,0.5);margin-top:1.5rem;line-height:2.2;">
+      <span style="font-weight:300;">Light 300 — Para párrafos y texto largo</span><br>
+      <span style="font-weight:400;">Regular 400 — Para texto general</span><br>
+      <span style="font-weight:500;">Medium 500 — Para labels y emphasis</span><br>
+      <span style="font-weight:600;">Semibold 600 — Para subtítulos y nav</span><br>
+      <span style="font-weight:700;">Bold 700 — Solo para números clave</span>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:1.5rem;font-family:'SF Mono',monospace;">Inter · 300–700 · Base: 16px · Line-height: 1.6–1.8</p>
+  </div>
+  <div class="type-scale">
+    <h3 style="font-family:'Bebas Neue';font-size:1.5rem;color:#fff;text-transform:uppercase;margin-bottom:1.5rem;">Escala tipográfica</h3>
+    <div class="type-scale-row"><div class="type-scale-label">Display</div><div class="type-scale-sample" style="font-family:'Bebas Neue';font-size:clamp(2.5rem,5vw,4.5rem);text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">La evolución</div></div>
+    <div class="type-scale-row"><div class="type-scale-label">H1</div><div class="type-scale-sample" style="font-family:'Bebas Neue';font-size:clamp(2rem,4vw,3.5rem);text-transform:uppercase;line-height:0.9;">Transiciones</div></div>
+    <div class="type-scale-row"><div class="type-scale-label">H2</div><div class="type-scale-sample" style="font-family:'Bebas Neue';font-size:clamp(1.5rem,3vw,2.5rem);text-transform:uppercase;line-height:0.9;">Espacios Regenerativos</div></div>
+    <div class="type-scale-row"><div class="type-scale-label">H3</div><div class="type-scale-sample" style="font-family:'Bebas Neue';font-size:1.5rem;text-transform:uppercase;line-height:1;">Para CEOs y Líderes</div></div>
+    <div class="type-scale-row"><div class="type-scale-label">Body</div><div class="type-scale-sample" style="font-family:'Inter';font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.6);">Acompaño la transición entre la estrategia que proyectas y la transformación que tu equipo necesita vivir.</div></div>
+    <div class="type-scale-row"><div class="type-scale-label">Caption</div><div class="type-scale-sample" style="font-family:'Inter';font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Juanita López Peláez · Speaker · Consultoría</div></div>
+  </div>
+</section>
+
+<!-- 05 PHOTOGRAPHY -->
+<div class="divider"></div>
+<section id="fotografia" class="section">
+  <p class="section-label">05 — Estilo fotográfico</p>
+  <h2 class="section-title">Naturaleza como estructura,<br>no como decoración.</h2>
+  <p class="section-desc">La fotografía de Musgo: texturas naturales y retratos profesionales de Juanita en contextos de conversación y liderazgo.</p>
+  <div class="photo-grid">
+    <div class="photo-card"><div class="photo-visual" style="background:linear-gradient(135deg,#1a3318,#0a150a);"><span style="font-size:2rem;">🌿</span></div><div class="photo-info"><h4>Texturas naturales</h4><p>Musgo, dosel de bosque, arroyos. Luz filtrada, tonos verdes profundos. Nunca saturado.</p></div></div>
+    <div class="photo-card"><div class="photo-visual" style="background:linear-gradient(135deg,#2a2a2a,#111);"><span style="font-size:2rem;">👤</span></div><div class="photo-info"><h4>Retratos profesionales</h4><p>Juanita en contextos de conversación, facilitación. Luz natural, fondos simples o con vegetación.</p></div></div>
+    <div class="photo-card"><div class="photo-visual" style="background:linear-gradient(135deg,#1a2618,#0a0a0a);"><span style="font-size:2rem;">✨</span></div><div class="photo-info"><h4>Luz y atmósfera</h4><p>Luz dorada filtrada, contra-luz suave. Sombras suaves, nunca duras. Mood: amanecer en el bosque.</p></div></div>
+  </div>
+</section>
+
+<!-- 06 VOICE -->
+<div class="divider"></div>
+<section id="voz" class="section">
+  <p class="section-label">06 — Tono de voz</p>
+  <h2 class="section-title">Directa pero cálida.<br>Con peso, sin pesadez.</h2>
+  <p class="section-desc">Musgo habla como alguien que sabe pero no necesita probarlo.</p>
+  <div class="voice-grid">
+    <div class="voice-card do"><h4>✓ Así sí</h4><p>"La evolución también sucede adentro."</p><p>"Cambio no es lo mismo que transición."</p><p>"Tu equipo necesita vivir la estrategia, no solo escucharla."</p><p>"Sin transición, un cambio es solo reorganización de muebles."</p></div>
+    <div class="voice-card dont"><h4>✕ Así no</h4><p>"Ofrecemos soluciones integrales de transformación organizacional..."</p><p>"¡Descubre tu mejor versión! 🌟🔥💪"</p><p>"Nuestro innovador framework de regeneración sistémica permite..."</p><p>"#TransformaTuVida #Coaching #Mindset"</p></div>
+  </div>
+</section>
+
+<!-- 07 APPLICATIONS -->
+<div class="divider"></div>
+<section id="aplicaciones" class="section">
+  <p class="section-label">07 — Aplicaciones</p>
+  <h2 class="section-title">Así se ve Musgo<br>en el mundo real.</h2>
+  <p class="section-desc">Piezas listas para usar. Cada una viene en 4 fondos: <strong style="color:#fff;">oscuro</strong>, <strong style="color:#d4c8b8;">crema</strong>, <strong style="color:#689b61;">verde</strong> y <strong style="background:linear-gradient(90deg,#1a3a17,#689b61,#c8d8c0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">degradé</strong>. Descarga el PNG y úsalo directo.</p>
+
+  <div style="margin-top:2rem;padding:1.5rem 2rem;border-radius:12px;background:rgba(104,155,97,0.06);border:1px solid rgba(104,155,97,0.12);">
+    <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#689b61;margin-bottom:0.75rem;font-weight:500;">Cómo usar estas piezas</p>
+    <ul style="font-size:0.85rem;color:rgba(255,255,255,0.5);font-weight:300;line-height:2;list-style:none;padding:0;">
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">LinkedIn banner:</strong> Sube la imagen en tu perfil → Editar perfil → Foto de portada.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">Posts:</strong> Descarga y sube como imagen al crear una publicación en LinkedIn o Instagram.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">Citas editables:</strong> El texto dice "Tu frase va aquí" — abre el PNG en Canva o cualquier editor y cambia el texto.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">Slide keynote:</strong> Úsala como primera diapositiva en presentaciones.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">Firma email:</strong> Recorta y pega como imagen en la configuración de firma de tu correo.</li>
+      <li>→ <strong style="color:rgba(255,255,255,0.7);">¿Qué fondo usar?</strong> Oscuro para LinkedIn/presentaciones. Crema para correos/documentos. Verde para destacar. Degradé para piezas premium o portadas.</li>
+    </ul>
+  </div>
+
+  <!-- JS generates all variants here -->
+  <div id="assets-container"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Monza Lab · Manual de Marca Completo · Musgo — Juanita López Peláez · Marzo 2026</p>
+</footer>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+  /* Asset group styling */
+  .asset-group { margin-top: 4rem; }
+  .asset-group-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); margin-bottom: 0.5rem;
+  }
+  .asset-group-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+    color: #fff; text-transform: uppercase; line-height: 1; margin-bottom: 0.5rem;
+  }
+  .asset-group-size {
+    font-size: 11px; color: rgba(255,255,255,0.2); font-family: 'SF Mono', monospace;
+    margin-bottom: 1.5rem;
+  }
+  .variants-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  @media (max-width: 900px) { .variants-row { grid-template-columns: 1fr; } }
+  .variant-col {}
+  .variant-label {
+    font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; text-align: center;
+  }
+  .variant-wrapper {
+    width: 100%; overflow: hidden; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06); position: relative;
+  }
+  .export-el {
+    transform-origin: top left;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow: hidden; position: relative;
+  }
+</style>
+
+<script>
+(function() {
+  const THEMES = {
+    dark:  { bg: '#000000', text: '#ffffff', accent: '#689b61', muted: 'rgba(255,255,255,0.35)', mutedMore: 'rgba(255,255,255,0.2)', label: 'Oscuro' },
+    cream: { bg: '#eeeeee', text: '#353535', accent: '#689b61', muted: 'rgba(53,53,53,0.45)', mutedMore: 'rgba(53,53,53,0.25)', label: 'Crema' },
+    green: { bg: '#689b61', text: '#ffffff', accent: '#ffffff', muted: 'rgba(255,255,255,0.6)', mutedMore: 'rgba(255,255,255,0.35)', label: 'Verde' },
+    gradient: { bg: 'linear-gradient(135deg, #0a0a0a 0%, #1a3a17 30%, #689b61 65%, #c8d8c0 100%)', text: '#ffffff', accent: '#c8d8c0', muted: 'rgba(255,255,255,0.55)', mutedMore: 'rgba(255,255,255,0.3)', label: 'Degradé', isGradient: true }
+  };
+
+  const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>';
+  let counter = 0;
+
+  /* ── DESIGNS ──
+     Enfoque: piezas macro, concretas, que Juanita pueda usar tal cual.
+     Solo logo, nombre, tagline, web, contacto. Sin contenido conceptual.
+  */
+  const DESIGNS = [
+    // ─── LINKEDIN BANNER 1584×396 ───
+    { category: 'LinkedIn Banner', w: 1584, h: 396, cls: 'lb', designs: [
+      { name: 'Banner — Logo + Tagline', render: (t) => `
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:120px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:240px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
+          <div style="font-size:34px;letter-spacing:0.35em;text-transform:uppercase;color:${t.muted};margin-top:18px;">Transiciones Regenerativas</div>
+        </div>`},
+      { name: 'Banner — Nombre + Web', render: (t) => `
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;justify-content:flex-end;padding:0 120px;gap:50px;">
+          <div style="text-align:right;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:150px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
+            <div style="font-size:28px;color:${t.muted};font-weight:300;margin-top:12px;">Juanita López Peláez</div>
+          </div>
+          <div style="width:2px;height:100px;background:${t.mutedMore};"></div>
+          <div style="text-align:right;">
+            <div style="font-size:28px;color:${t.muted};font-weight:300;line-height:1.7;">Transiciones regenerativas para<br>organizaciones, equipos y personas.</div>
+            <div style="font-size:24px;letter-spacing:0.15em;text-transform:uppercase;color:${t.accent};margin-top:14px;">musgo.space</div>
+          </div>
+        </div>`},
+      { name: 'Banner — Minimal', render: (t) => `
+        <div style="width:1584px;height:396px;background:${t.bg};display:flex;align-items:center;justify-content:flex-end;padding:0 120px;gap:50px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:140px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
+          <div style="width:2px;height:85px;background:${t.mutedMore};"></div>
+          <div style="font-size:30px;letter-spacing:0.15em;text-transform:uppercase;color:${t.muted};">Juanita López Peláez · Transiciones Regenerativas</div>
+        </div>`}
+    ]},
+
+    // ─── POST LINKEDIN 1200×628 ───
+    { category: 'Post LinkedIn', w: 1200, h: 628, cls: 'lp', designs: [
+      { name: 'Post — Marca Completa', render: (t) => `
+        <div style="width:1200px;height:628px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px;">
+          <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:${t.muted};margin-bottom:30px;">Juanita López Peláez</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:100px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
+          <div style="width:50px;height:2px;background:${t.accent};margin:24px 0;"></div>
+          <div style="font-size:14px;color:${t.muted};font-weight:300;line-height:1.7;">Transiciones regenerativas para<br>organizaciones, equipos y personas.</div>
+          <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:${t.accent};margin-top:24px;">musgo.space</div>
+        </div>`},
+      { name: 'Post — Cita Editable', render: (t) => `
+        <div style="width:1200px;height:628px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px;">
+          <div style="font-size:48px;color:${t.accent};line-height:1;margin-bottom:16px;">"</div>
+          <div style="font-size:22px;color:${t.text};font-weight:300;line-height:1.7;font-style:italic;max-width:700px;">Tu frase o reflexión va aquí.</div>
+          <div style="width:40px;height:1px;background:${t.accent};margin:24px 0;"></div>
+          <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:${t.muted};">Juanita López Peláez · Musgo</div>
+        </div>`}
+    ]},
+
+    // ─── INSTAGRAM 1080×1080 ───
+    { category: 'Instagram Cuadrado', w: 1080, h: 1080, cls: 'ig', designs: [
+      { name: 'IG — Marca Central', render: (t) => `
+        <div style="width:1080px;height:1080px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 90px;">
+          <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:${t.muted};margin-bottom:50px;">Juanita López Peláez</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
+          <div style="width:50px;height:2px;background:${t.accent};margin:40px 0;"></div>
+          <div style="font-size:15px;color:${t.muted};font-weight:300;line-height:1.8;">Transiciones regenerativas para<br>organizaciones, equipos y personas.</div>
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:${t.mutedMore};margin-top:50px;">musgo.space</div>
+        </div>`},
+      { name: 'IG — Cita Editable', render: (t) => `
+        <div style="width:1080px;height:1080px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:${t.accent};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;margin-bottom:50px;">MUSGO</div>
+          <div style="font-size:48px;color:${t.accent};line-height:1;margin-bottom:16px;">"</div>
+          <div style="font-size:26px;color:${t.text};font-weight:300;line-height:1.6;font-style:italic;max-width:600px;">Tu frase o reflexión va aquí.<br>Edita este texto.</div>
+          <div style="width:40px;height:1px;background:${t.accent};margin:40px 0;"></div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:${t.muted};">Juanita López Peláez</div>
+          <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:${t.mutedMore};margin-top:50px;">musgo.space</div>
+        </div>`}
+    ]},
+
+    // ─── SLIDE 1920×1080 ───
+    { category: 'Slide — Portada Keynote', w: 1920, h: 1080, cls: 'slide', designs: [
+      { name: 'Slide — Portada', render: (t) => `
+        <div style="width:1920px;height:1080px;background:${t.bg};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:${t.muted};margin-bottom:50px;">Juanita López Peláez</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:180px;color:${t.text};text-transform:uppercase;line-height:0.82;letter-spacing:-0.03em;">MUSGO</div>
+          <div style="font-size:14px;letter-spacing:0.3em;text-transform:uppercase;color:${t.accent};margin-top:16px;">Transiciones Regenerativas</div>
+          <div style="width:60px;height:1px;background:${t.mutedMore};margin:50px 0;"></div>
+          <div style="font-size:15px;color:${t.muted};font-weight:300;line-height:1.8;">Organizaciones · Equipos · Personas</div>
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:${t.mutedMore};margin-top:40px;">musgo.space</div>
+        </div>`}
+    ]},
+
+    // ─── EMAIL SIGNATURE 600×auto ───
+    { category: 'Firma de Email', w: 600, h: 120, cls: 'es', designs: [
+      { name: 'Firma Email', render: (t) => `
+        <div style="width:600px;padding:20px 24px;background:${t.bg};display:flex;align-items:center;gap:20px;border-top:2px solid ${t.accent};">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:${t.text};text-transform:uppercase;line-height:0.85;letter-spacing:-0.02em;">MUSGO</div>
+          <div style="width:1px;height:48px;background:${t.mutedMore};"></div>
+          <div>
+            <div style="font-size:13px;color:${t.text};font-weight:500;">Juanita López Peláez</div>
+            <div style="font-size:11px;color:${t.muted};font-weight:300;margin-top:2px;">Transiciones Regenerativas</div>
+            <div style="font-size:11px;color:${t.accent};margin-top:4px;">juanita@musgo.space · musgo.space</div>
+          </div>
+        </div>`}
+    ]}
+  ];
+
+  /* ── BUILD HTML ── */
+  const container = document.getElementById('assets-container');
+  let html = '';
+
+  DESIGNS.forEach(cat => {
+    cat.designs.forEach(design => {
+      const groupId = counter++;
+      html += `<div class="asset-group">`;
+      html += `<p class="asset-group-label">${cat.category}</p>`;
+      html += `<h3 class="asset-group-title">${design.name}</h3>`;
+      html += `<p class="asset-group-size">${cat.w} × ${cat.h}px</p>`;
+      html += `<div class="variants-row">`;
+
+      Object.entries(THEMES).forEach(([key, theme]) => {
+        const elId = `asset-${groupId}-${key}`;
+        const filename = `musgo-${design.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${key}`;
+        html += `<div class="variant-col">`;
+        html += `<p class="variant-label">${theme.label}</p>`;
+        html += `<div class="variant-wrapper" data-native-w="${cat.w}" data-native-h="${cat.h}">`;
+        html += `<div class="export-el" id="${elId}" style="width:${cat.w}px;height:${cat.h === 120 ? 'auto' : cat.h + 'px'};">`;
+        html += design.render(theme);
+        html += `</div></div>`;
+        html += `<button class="dl-btn" onclick="downloadAsset('${elId}','${filename}')">${DL_ICON}Descargar PNG</button>`;
+        html += `</div>`;
+      });
+
+      html += `</div></div>`;
+    });
+  });
+
+  container.innerHTML = html;
+
+  /* ── SCALE TO FIT ── */
+  function scaleExports() {
+    document.querySelectorAll('.variant-wrapper').forEach(wrapper => {
+      const el = wrapper.querySelector('.export-el');
+      const nativeW = parseInt(wrapper.dataset.nativeW);
+      const nativeH = parseInt(wrapper.dataset.nativeH);
+      const scale = wrapper.offsetWidth / nativeW;
+      el.style.transform = `scale(${scale})`;
+      el.style.transformOrigin = 'top left';
+      const actualH = nativeH === 120 ? el.scrollHeight : nativeH;
+      wrapper.style.height = (actualH * scale) + 'px';
+    });
+  }
+
+  window.addEventListener('load', () => { setTimeout(scaleExports, 100); });
+  window.addEventListener('resize', scaleExports);
+
+  /* ── DOWNLOAD ── */
+  window.downloadAsset = function(id, filename) {
+    const el = document.getElementById(id);
+    const btn = event.target.closest('.dl-btn');
+    btn.classList.add('downloading');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="30" stroke-dashoffset="10"/></svg>Generando...';
+
+    const origTransform = el.style.transform;
+    el.style.transform = 'none';
+
+    html2canvas(el, {
+      scale: 1,
+      useCORS: true,
+      backgroundColor: null,
+      width: el.offsetWidth,
+      height: el.offsetHeight
+    }).then(canvas => {
+      el.style.transform = origTransform;
+      const link = document.createElement('a');
+      link.download = filename + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      btn.classList.remove('downloading');
+      btn.innerHTML = DL_ICON + 'Descargar PNG';
+    }).catch(err => {
+      el.style.transform = origTransform;
+      console.error(err);
+      btn.classList.remove('downloading');
+      btn.innerHTML = 'Error — Reintentar';
+    });
+  };
+
+  // Also expose DL_ICON globally for button reset
+  window.DL_ICON = DL_ICON;
+})();
+</script>
+
+</body>
+</html>
