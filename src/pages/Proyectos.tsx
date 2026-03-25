@@ -2,19 +2,6 @@ import { motion } from "framer-motion";
 
 const proyectos = [
   {
-    name: "Terrasos",
-    role: "Directora estratégica",
-    status: "En curso",
-    year: "2026 — presente",
-    description: "Acompañamiento estratégico a una empresa de 60 personas en innovación social y ambiental. Mi rol: dirigir sin operar. Supervisar directores técnicos, estructurar gobernanza y acompañar la transición de una organización llena de energía pero con dolores de crecimiento.",
-    details: [
-      "Empresa de 60 personas en innovación social y ambiental",
-      "Contrato de 18 meses como advisor estratégica",
-      "Estructuración de liderazgo y capacidad gerencial",
-      "Modelo advisor-as-a-service: dirigir sin producir entregables",
-    ],
-  },
-  {
     name: "Mundo Común",
     role: "Co-fundadora y directora",
     status: "Completado",

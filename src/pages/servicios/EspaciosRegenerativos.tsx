@@ -12,20 +12,26 @@ const aplicaciones = [
   {
     num: "01",
     title: "Formación & Academia",
-    description:
-      "Cohortes y programas ejecutivos que empaquetan contenido sin dejar espacio para que algo real pase entre las personas. Inyectamos metodologías de pensamiento sistémico desde la autoconciencia — para que el grupo conecte de verdad.",
+    brecha:
+      "Los programas ejecutivos empaquetan contenido sin dejar espacio para que algo real pase entre las personas.",
+    solucion:
+      "Diseñamos experiencias de formación donde inyectamos metodologías de pensamiento sistémico desde la autoconciencia — para que el grupo conecte de verdad.",
   },
   {
     num: "02",
-    title: "Juntas Directivas",
-    description:
-      "La conversación a nivel de juntas es superficial. Se necesita gente que piense en el fondo de la estrategia y el impacto — no solo indicadores. Hacemos de la junta un mejor contenedor para el pensamiento estratégico y el cambio sistémico.",
+    title: "Board Whisperer",
+    brecha:
+      "La conversación en las juntas a veces se queda en la capa de control y resultados. Cuesta ir a lo más profundo — a los temas sistémicos que definen el futuro.",
+    solucion:
+      "Traemos las preguntas que nadie más hace y hacemos de la junta un mejor contenedor para el pensamiento estratégico y el cambio sistémico.",
   },
   {
     num: "03",
     title: "Gremios & Comunidades",
-    description:
-      "Comunidades de inversión, gremios empresariales y ecosistemas de impacto que se reúnen sin profundidad. Diseñamos experiencias donde la conexión emocional potencia el poder del encuentro para traer cambios sistémicos.",
+    brecha:
+      "Comunidades de inversión, gremios empresariales y ecosistemas de impacto que no logran extraer todo el potencial de la inteligencia colectiva de sus encuentros.",
+    solucion:
+      "Diseñamos experiencias donde la conexión emocional potencia el poder del encuentro para activar inteligencia colectiva frente a desafíos reales.",
   },
 ];
 
@@ -88,7 +94,7 @@ export default function EspaciosRegenerativos() {
     <div className="min-h-screen">
       {/* ─── 1. HERO ─── */}
       <section
-        className="bg-[#0f0f0f] pt-32 pb-24 md:pt-40 md:pb-32"
+        className="bg-[#142114] pt-32 pb-24 md:pt-40 md:pb-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-8">
@@ -122,8 +128,8 @@ export default function EspaciosRegenerativos() {
             transition={{ ...fadeUp.transition, delay: 0.3 }}
             className="text-lg text-white/60 font-light leading-relaxed max-w-3xl mt-6"
           >
-            Espacios donde la gente se encuentra de verdad. Inteligencia
-            colectiva activada para mover desafíos reales.
+            Creamos espacios donde la gente se encuentra de verdad.
+            Activamos inteligencia colectiva para mover desafíos reales.
           </motion.p>
 
           <motion.div
@@ -133,7 +139,7 @@ export default function EspaciosRegenerativos() {
           >
             <Link
               to="/contacto"
-              className="inline-block border border-white/40 text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-white hover:text-[#0f0f0f] transition-all duration-300"
+              className="inline-block border border-white/40 text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-white hover:text-[#142114] transition-all duration-300"
             >
               Conversemos →
             </Link>
@@ -156,7 +162,7 @@ export default function EspaciosRegenerativos() {
               <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 Las organizaciones implementan cambios externos:
                 reorganizaciones, nuevas estrategias, tecnología. Pero los
-                equipos no transitan internamente.
+                equipos no transitan internamente. Eso no toca el fondo del problema.
               </p>
               <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 Las juntas tienen agendas cortoplacistas. Los gremios hacen
@@ -171,10 +177,9 @@ export default function EspaciosRegenerativos() {
             >
               <div className="border-l-2 border-primary pl-6">
                 <p className="text-lg text-primary font-light italic leading-relaxed">
-                  Hay una crisis de burnout que la gente trata con respiración y
-                  talleres tácticos. Eso es jardín. La crisis individual está
-                  conectada con una crisis sistémica — y eso es lo que nadie
-                  aborda.
+                  El burnout se aborda solo como una crisis individual — desde la
+                  salud mental y física. Pero es un síntoma de una crisis
+                  sistémica, y eso es lo que nadie aborda.
                 </p>
               </div>
             </motion.div>
@@ -183,7 +188,7 @@ export default function EspaciosRegenerativos() {
       </section>
 
       {/* ─── 3. TRES APLICACIONES ─── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32">
+      <section className="bg-[#f0f4ef] py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-8">
           <motion.p
             {...fadeUp}
@@ -193,7 +198,7 @@ export default function EspaciosRegenerativos() {
           </motion.p>
           <motion.h2
             {...fadeUp}
-            className="font-display text-4xl md:text-5xl text-white leading-none uppercase mb-16"
+            className="font-display text-4xl md:text-5xl text-foreground leading-none uppercase mb-16"
           >
             Tres espacios donde
             <br />
@@ -206,16 +211,20 @@ export default function EspaciosRegenerativos() {
                 key={app.num}
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: i * 0.1 }}
-                className="border border-white/10 p-8 md:p-10 rounded-lg"
+                className="border border-border p-8 md:p-10 rounded-lg"
               >
                 <span className="font-display text-4xl text-primary/40">
                   {app.num}
                 </span>
-                <h3 className="font-display text-2xl text-white uppercase mt-4 mb-4">
+                <h3 className="font-display text-2xl text-foreground uppercase mt-4 mb-4">
                   {app.title}
                 </h3>
-                <p className="text-white/50 font-light leading-relaxed text-sm">
-                  {app.description}
+                <p className="text-muted-foreground/60 font-light leading-relaxed text-sm">
+                  {app.brecha}
+                </p>
+                <div className="w-8 h-px bg-primary/50 my-4" />
+                <p className="text-foreground/80 font-light leading-relaxed text-sm">
+                  {app.solucion}
                 </p>
               </motion.div>
             ))}
@@ -230,7 +239,7 @@ export default function EspaciosRegenerativos() {
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
           >
-            Círculos de Resonancia
+            Metodología
           </motion.p>
           <motion.h2
             {...fadeUp}
@@ -242,9 +251,9 @@ export default function EspaciosRegenerativos() {
             {...fadeUp}
             className="text-xl text-muted-foreground font-light leading-relaxed max-w-3xl mb-16"
           >
-            90 minutos diseñados para que emerja lo que importa. Un líder
-            presenta su caso a 5-6 pares. No es una dinámica de integración — es
-            un espacio con estructura y profundidad.
+            Diseñamos 90 minutos para que emerja lo que importa. Un líder
+            presenta su caso a 5-6 pares. No es una dinámica de integración —
+            acompañamos un espacio con estructura y profundidad.
           </motion.p>
 
           <div className="grid md:grid-cols-2 gap-10">
@@ -274,20 +283,20 @@ export default function EspaciosRegenerativos() {
             {...fadeUp}
             className="text-sm text-muted-foreground/60 mt-12"
           >
-            Basado en la Teoría U de Otto Scharmer — Escucha profunda, presencing
-            e inteligencia colectiva.
+            Una de nuestras herramientas principales, basada en la Teoría U de
+            Otto Scharmer.
           </motion.p>
         </div>
       </section>
 
       {/* ─── 5. IMPACTO ─── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32">
+      <section className="bg-[#f0f4ef] py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-8">
           <motion.h2
             {...fadeUp}
-            className="font-display text-4xl md:text-5xl text-white leading-none uppercase mb-16"
+            className="font-display text-4xl md:text-5xl text-foreground leading-none uppercase mb-16"
           >
-            Lo que cambia
+            Lo que te llevas
           </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-12">
@@ -305,7 +314,7 @@ export default function EspaciosRegenerativos() {
                   {col.bullets.map((b, j) => (
                     <div key={j} className="flex gap-3 items-start">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <p className="text-white/60 font-light leading-relaxed">
+                      <p className="text-muted-foreground font-light leading-relaxed">
                         {b}
                       </p>
                     </div>
@@ -339,8 +348,8 @@ export default function EspaciosRegenerativos() {
                 className="text-lg text-muted-foreground font-light leading-relaxed"
               >
                 20 años en la intersección del cambio sistémico. Sector público,
-                sector privado, innovación social. Una mirada que conecta lo
-                estratégico con lo humano.
+                sector privado, innovación social. Traemos una mirada que
+                conecta lo estratégico con lo humano.
               </motion.p>
             </div>
 
@@ -374,7 +383,7 @@ export default function EspaciosRegenerativos() {
       </section>
 
       {/* ─── 7. CTA FINAL ─── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32">
+      <section className="bg-[#142114] py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.h2
             {...fadeUp}
@@ -388,8 +397,8 @@ export default function EspaciosRegenerativos() {
             transition={{ ...fadeUp.transition, delay: 0.1 }}
             className="text-lg text-white/60 font-light max-w-2xl mx-auto mt-8"
           >
-            Cada espacio se diseña a medida. Conversemos sobre lo que necesita tu
-            equipo, tu junta o tu comunidad.
+            Cada espacio lo diseñamos a medida. Conversemos sobre lo que necesita
+            tu equipo, tu junta o tu comunidad.
           </motion.p>
 
           <motion.div
@@ -399,7 +408,7 @@ export default function EspaciosRegenerativos() {
           >
             <Link
               to="/contacto"
-              className="inline-block border border-white/40 text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-white hover:text-[#0f0f0f] transition-all duration-300"
+              className="inline-block border border-white/40 text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-white hover:text-[#142114] transition-all duration-300"
             >
               Conversemos →
             </Link>

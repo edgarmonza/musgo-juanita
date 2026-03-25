@@ -48,7 +48,7 @@ const noEs = [
 
 const siEs = [
   "Espacio de contención real, con estructura y cuidado",
-  "Conectar la crisis personal con la crisis sistémica",
+  "Conectamos la crisis personal con la crisis sistémica",
   "Acompañamiento desde la experiencia vivida",
   "Conexión auténtica — una red de sostén",
 ];
@@ -65,7 +65,7 @@ export default function Transiciones() {
     <div className="min-h-screen">
       {/* ── 1. Hero ── */}
       <section
-        className="bg-[#0f0f0f] pt-40 pb-28 md:pb-36"
+        className="bg-[#142114] pt-40 pb-28 md:pb-36"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-8">
@@ -138,9 +138,11 @@ export default function Transiciones() {
               className="space-y-6"
             >
               <p className="text-lg text-muted-foreground font-light leading-relaxed">
-                Hay una crisis de burnout que la gente trata con respiración y
-                talleres tácticos. Eso es superficial. La crisis individual está
-                conectada con una crisis sistémica — y nadie abre ese espacio.
+                El burnout se aborda solo como una crisis individual — desde la
+                salud mental y física. Pero es un síntoma de una desconexión
+                sistémica. ¿Qué tiene que ver el burnout con la transición
+                energética? Esa es la pregunta que nadie hace — y ese es el
+                espacio que abrimos.
               </p>
               <p className="text-lg text-primary font-light italic leading-relaxed">
                 No estás solo en esto. Necesitas un espacio donde puedas resonar
@@ -153,7 +155,7 @@ export default function Transiciones() {
 
       {/* ── 3. El Proceso — Modelo Bridges ── */}
       <section
-        className="bg-[#0f0f0f] py-24 md:py-32"
+        className="bg-[#f0f4ef] py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-8">
@@ -165,7 +167,7 @@ export default function Transiciones() {
           </motion.p>
           <motion.h2
             {...fadeUp}
-            className="font-display text-4xl md:text-5xl text-white leading-none mb-16"
+            className="font-display text-4xl md:text-5xl text-foreground leading-none mb-16"
           >
             El Proceso
           </motion.h2>
@@ -178,18 +180,18 @@ export default function Transiciones() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
-                className="grid md:grid-cols-12 gap-6 md:gap-8 border-b border-white/10 pb-12"
+                className="grid md:grid-cols-12 gap-6 md:gap-8 border-b border-border pb-12"
               >
                 <div className="md:col-span-2">
-                  <span className="font-display text-7xl md:text-8xl text-primary/25">
+                  <span className="font-display text-7xl md:text-8xl text-primary/20">
                     {fase.num}
                   </span>
                 </div>
                 <div className="md:col-span-10 space-y-4">
-                  <h3 className="font-display text-3xl md:text-4xl text-white leading-none">
+                  <h3 className="font-display text-3xl md:text-4xl text-foreground leading-none">
                     {fase.title}
                   </h3>
-                  <p className="text-lg text-white/55 font-light leading-relaxed max-w-2xl">
+                  <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl">
                     {fase.desc}
                   </p>
                   {fase.highlight && (
@@ -251,7 +253,7 @@ export default function Transiciones() {
               </p>
             </div>
             <div>
-              <p className="font-display text-4xl text-primary">2h</p>
+              <p className="font-display text-4xl text-primary">2-4h</p>
               <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1">
                 Sesión
               </p>
@@ -268,13 +270,13 @@ export default function Transiciones() {
 
       {/* ── 5. Esto es diferente ── */}
       <section
-        className="bg-[#0f0f0f] py-24 md:py-32"
+        className="bg-[#f0f4ef] py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-8">
           <motion.h2
             {...fadeUp}
-            className="font-display text-4xl md:text-5xl text-white leading-none mb-14"
+            className="font-display text-4xl md:text-5xl text-foreground leading-none mb-14"
           >
             Esto es diferente
           </motion.h2>
@@ -282,15 +284,15 @@ export default function Transiciones() {
           <div className="grid md:grid-cols-2 gap-16">
             {/* NO es */}
             <motion.div {...fadeUp} className="space-y-5">
-              <p className="text-xs uppercase tracking-widest text-white/25 mb-4">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground/40 mb-4">
                 Esto NO es
               </p>
               {noEs.map((item, i) => (
                 <div key={i} className="flex gap-3 items-start">
-                  <span className="text-white/20 text-lg leading-none mt-0.5">
+                  <span className="text-muted-foreground/30 text-lg leading-none mt-0.5">
                     &times;
                   </span>
-                  <p className="text-white/35 font-light text-sm leading-relaxed">
+                  <p className="text-muted-foreground/50 font-light text-sm leading-relaxed">
                     {item}
                   </p>
                 </div>
@@ -311,7 +313,7 @@ export default function Transiciones() {
                   <span className="text-primary text-lg leading-none mt-0.5">
                     &#10003;
                   </span>
-                  <p className="text-white/65 font-light text-sm leading-relaxed">
+                  <p className="text-foreground/70 font-light text-sm leading-relaxed">
                     {item}
                   </p>
                 </div>
@@ -345,9 +347,10 @@ export default function Transiciones() {
                 desde el camino recorrido.
               </p>
               <p className="text-lg text-muted-foreground font-light leading-relaxed">
-                Lo que entrega es esa conexión: la crisis del burnout, la crisis
-                individual, conectada con una crisis más amplia, sistémica. Ahí
-                es donde está el fondo de la cosa.
+                Lo que entrega es esa conexión: el burnout no es solo un problema
+                tuyo — es un síntoma de una crisis sistémica. Conectamos la
+                transición personal con la necesidad de transitar hacia un
+                futuro regenerativo.
               </p>
             </motion.div>
 
@@ -385,7 +388,7 @@ export default function Transiciones() {
 
       {/* ── 7. CTA Final ── */}
       <section
-        className="bg-[#0f0f0f] py-28 md:py-36"
+        className="bg-[#142114] py-28 md:py-36"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-4xl mx-auto px-8 text-center">

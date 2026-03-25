@@ -41,7 +41,7 @@ const componentes = [
   },
   {
     title: "Liderazgo regenerativo",
-    desc: "Acompañamiento al CEO y equipo líder. No puedes pedir regeneración si el liderazgo sigue en lógica extractiva.",
+    desc: "Acompañamiento al CEO y equipo líder. No se puede pedir regeneración si el liderazgo sigue en lógica extractiva.",
   },
   {
     title: "Espacios de formación",
@@ -62,8 +62,8 @@ const formatos = [
   },
   {
     num: "03",
-    title: "Acompañamiento al CEO",
-    desc: "Sesiones periódicas para traer perspectivas sistémicas a las decisiones estratégicas. El CEO Whisperer como práctica.",
+    title: "Board Whisperer",
+    desc: "Sesiones periódicas para traer perspectivas sistémicas a las decisiones estratégicas del líder y la junta.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function Regeneracion360() {
     <div className="min-h-screen">
       {/* ── 1. Hero ── */}
       <section
-        className="bg-[#0f0f0f] pt-32 pb-24 md:pb-32 scroll-mt-24"
+        className="bg-[#142114] pt-32 pb-24 md:pb-32 scroll-mt-24"
       >
         <div className="max-w-5xl mx-auto px-8">
           <motion.p
@@ -161,7 +161,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 3. La Diferencia ── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-8">
           <motion.p
             {...fadeUp}
@@ -176,17 +176,17 @@ export default function Regeneracion360() {
                 key={item.eje}
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: i * 0.1 }}
-                className="border border-white/10 p-8 rounded-lg space-y-6"
+                className="border border-border p-8 rounded-lg space-y-6"
               >
-                <h3 className="font-display text-3xl text-white leading-none">
+                <h3 className="font-display text-3xl text-foreground leading-none">
                   {item.eje}
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-white/30 mb-1">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-1">
                       Sostenible
                     </p>
-                    <p className="text-white/40 font-light text-sm">
+                    <p className="text-muted-foreground/60 font-light text-sm">
                       {item.sostenible}
                     </p>
                   </div>
@@ -194,7 +194,7 @@ export default function Regeneracion360() {
                     <p className="text-xs uppercase tracking-widest text-primary mb-1">
                       Regenerativo
                     </p>
-                    <p className="text-white/80 font-light text-sm">
+                    <p className="text-foreground/80 font-light text-sm">
                       {item.regenerativo}
                     </p>
                   </div>
@@ -245,8 +245,8 @@ export default function Regeneracion360() {
         </div>
       </section>
 
-      {/* ── 5. CEO Whisperer ── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32 scroll-mt-24">
+      {/* ── 5. Board Whisperer ── */}
+      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -259,19 +259,20 @@ export default function Regeneracion360() {
               <motion.h2
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: 0.05 }}
-                className="font-display text-4xl md:text-5xl text-white leading-none mb-8"
+                className="font-display text-4xl md:text-5xl text-foreground leading-none mb-8"
               >
-                CEO Whisperer
+                Board Whisperer
               </motion.h2>
               <motion.p
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: 0.1 }}
-                className="text-lg text-white/60 font-light leading-relaxed"
+                className="text-lg text-muted-foreground font-light leading-relaxed"
               >
-                Un acompañamiento cercano al líder. No para decirle qué hacer
-                — sino para traer las preguntas que nadie más le hace. Temas
-                sistémicos a la mesa. Perspectiva de largo plazo en un mundo de
-                agendas cortoplacistas.
+                Acompañamiento cercano al líder y a la junta. No para decir
+                qué hacer — sino para traer las preguntas que nadie más hace
+                y hacer de la junta un mejor contenedor para el pensamiento
+                estratégico. Temas sistémicos a la mesa. Perspectiva de largo
+                plazo en un mundo de agendas cortoplacistas.
               </motion.p>
             </div>
 
@@ -279,20 +280,20 @@ export default function Regeneracion360() {
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.15 }}
             >
-              <div className="bg-white/5 border border-white/10 p-8 rounded-lg">
-                <p className="text-xs uppercase tracking-widest text-white/30 mb-5">
+              <div className="bg-white/80 border border-border p-8 rounded-lg">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground/50 mb-5">
                   Las preguntas que traemos
                 </p>
                 <div className="space-y-4">
-                  <p className="text-white/60 font-light leading-relaxed italic text-sm">
+                  <p className="text-muted-foreground font-light leading-relaxed italic text-sm">
                     "¿Qué le está pasando a tu organización que no se puede ver
                     en los indicadores?"
                   </p>
-                  <p className="text-white/60 font-light leading-relaxed italic text-sm">
+                  <p className="text-muted-foreground font-light leading-relaxed italic text-sm">
                     "¿Cómo se conecta tu estrategia de sostenibilidad con un
                     cambio sistémico real?"
                   </p>
-                  <p className="text-white/60 font-light leading-relaxed italic text-sm">
+                  <p className="text-muted-foreground font-light leading-relaxed italic text-sm">
                     "¿Qué tipo de organización necesita el mundo en los próximos
                     10 años?"
                   </p>
@@ -342,11 +343,11 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 7. Para Quién ── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-8">
           <motion.h2
             {...fadeUp}
-            className="font-display text-4xl md:text-5xl text-white uppercase leading-none mb-12"
+            className="font-display text-4xl md:text-5xl text-foreground uppercase leading-none mb-12"
           >
             Para quién
           </motion.h2>
@@ -359,7 +360,7 @@ export default function Regeneracion360() {
             {audiencia.map((item, i) => (
               <div key={i} className="flex gap-4 items-start">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                <p className="text-lg text-white/60 font-light leading-relaxed">
+                <p className="text-lg text-muted-foreground font-light leading-relaxed">
                   {item}
                 </p>
               </div>
@@ -445,7 +446,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 9. CTA Final ── */}
-      <section className="bg-[#0f0f0f] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-[#142114] py-24 md:py-32 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.h2
             {...fadeUp}
