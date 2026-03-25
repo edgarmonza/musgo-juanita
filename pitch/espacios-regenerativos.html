@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espacios Regenerativos — Musgo | Juanita López</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Bebas Neue','Impact','sans-serif'], sans: ['Inter','system-ui','sans-serif'] },
+        colors: { musgo: { DEFAULT:'#689b61', light:'#7fb878' }, 'dark-gray':'#353535', 'light-gray':'#eeeeee' }
+      }}
+    }
+  </script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{overflow:hidden;height:100%;font-family:'Inter',system-ui,sans-serif;color:#353535;background:#fff;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4{font-family:'Bebas Neue',Impact,sans-serif;text-transform:uppercase;letter-spacing:-0.02em}
+
+    .deck{display:flex;height:100vh;transition:transform 0.7s cubic-bezier(0.25,0.1,0,1)}
+    .slide{min-width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+
+    .slide-content{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s}
+    .slide.active .slide-content{opacity:1;transform:translateY(0)}
+    .slide-content.d1{transition-delay:0.4s}.slide-content.d2{transition-delay:0.5s}.slide-content.d3{transition-delay:0.6s}.slide-content.d4{transition-delay:0.7s}
+
+    .nav-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:50;width:48px;height:48px;border-radius:50%;border:1px solid rgba(53,53,53,0.15);background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}
+    .nav-arrow:hover{border-color:#689b61;background:#fff}
+    .nav-arrow.left{left:24px}.nav-arrow.right{right:24px}
+    .nav-arrow svg{width:18px;height:18px;color:#353535}
+
+    .dots{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px}
+    .dot{width:8px;height:8px;border-radius:50%;background:rgba(53,53,53,0.15);cursor:pointer;transition:all 0.3s}
+    .dot.active{background:#689b61;width:24px;border-radius:4px}
+
+    .counter{position:fixed;top:32px;right:32px;z-index:50;font-family:'Bebas Neue';font-size:1rem;letter-spacing:0.1em;color:rgba(53,53,53,0.3)}
+    .logo{position:fixed;top:32px;left:32px;z-index:50;font-family:'Bebas Neue';font-size:1.25rem;letter-spacing:0.05em;color:#353535;text-transform:uppercase;text-decoration:none;transition:color 0.3s}
+    .logo:hover{color:#689b61}
+
+    .slide.dark{background:#353535;color:#fff}
+    .slide.dark .slide-content{color:#fff}
+    .slide.green{background:#689b61;color:#fff}
+    .slide.gray{background:#eeeeee}
+
+    @media(max-width:768px){
+      .nav-arrow{width:40px;height:40px}.nav-arrow.left{left:12px}.nav-arrow.right{right:12px}
+      .counter{top:20px;right:20px}.logo{top:20px;left:20px}
+      .dots{bottom:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#" class="logo">MUSGO</a>
+  <div class="counter" id="counter">01 / 10</div>
+
+  <button class="nav-arrow left" id="prev" onclick="go(-1)">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+  </button>
+  <button class="nav-arrow right" id="next" onclick="go(1)">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+  </button>
+
+  <div class="dots" id="dots"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- 1: Hero -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <div class="slide-content">
+          <p class="text-xs uppercase tracking-widest text-dark-gray/50 mb-6">Espacios Regenerativos</p>
+        </div>
+        <h1 class="slide-content d1 font-display text-5xl md:text-7xl lg:text-[7rem] text-dark-gray leading-[0.88]">
+          De la transacción<br>a la resonancia.
+        </h1>
+        <p class="slide-content d2 text-xl md:text-2xl text-musgo font-light max-w-3xl mt-8 leading-relaxed">
+          Espacios donde la gente se encuentra de verdad. Inteligencia colectiva activada para mover desafíos reales.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2: La Brecha -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <h2 class="slide-content font-display text-4xl md:text-5xl text-dark-gray leading-none mb-12">La Brecha</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div class="slide-content d1 space-y-5">
+            <p class="text-lg text-dark-gray/60 font-light leading-relaxed">
+              Las organizaciones implementan cambios externos: reorganizaciones, nuevas estrategias, tecnología. Pero los equipos no transitan internamente.
+            </p>
+            <p class="text-lg text-dark-gray/60 font-light leading-relaxed">
+              Las juntas tienen agendas cortoplacistas. Los gremios hacen networking transaccional. Los eventos empaquetan contenido sin un solo espacio para que la gente se mire a los ojos.
+            </p>
+          </div>
+          <div class="slide-content d2 space-y-5">
+            <p class="text-lg text-musgo font-light italic leading-relaxed">
+              Hay una crisis de burnout que la gente trata con respiración y talleres tácticos. Eso es jardín. La crisis individual está conectada con una crisis sistémica — y eso es lo que nadie aborda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3: Quote -->
+    <section class="slide gray">
+      <div class="max-w-4xl mx-auto px-8 md:px-16 text-center">
+        <blockquote class="slide-content">
+          <p class="font-sans text-3xl md:text-4xl lg:text-5xl text-dark-gray italic leading-snug">
+            "¿Cómo regeneramos nuestra relación con el sistema para crear formas de vida prósperas?"
+          </p>
+          <p class="slide-content d1 text-sm text-dark-gray/40 mt-8">La pregunta que guía todo lo que hacemos.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 4: Formación & Academia -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">Aplicación 01</p>
+        <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-10">Formación & Academia</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed">
+            Cohortes y programas ejecutivos que empaquetan contenido sin dejar espacio para que algo real pase entre las personas. Inyectamos metodologías de pensamiento sistémico desde la autoconciencia — para que el grupo conecte de verdad.
+          </p>
+          <div class="slide-content d3 border-l-2 border-musgo pl-6">
+            <p class="text-dark-gray/60 font-light leading-relaxed italic">
+              Cohortes de liderazgo, programas de gobierno corporativo, formación C-level. Dos días empaquetados de 7:30am a 8pm — sin un solo espacio para que la gente se encuentre de verdad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: Juntas Directivas -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">Aplicación 02</p>
+        <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-10">Juntas Directivas</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed">
+            La conversación a nivel de juntas es superficial. Se necesita gente que piense en el fondo de la estrategia y el impacto — no solo indicadores. Hacemos de la junta un mejor contenedor para el pensamiento estratégico y el cambio sistémico.
+          </p>
+          <div class="slide-content d3 space-y-6">
+            <div class="bg-musgo/5 p-6 rounded-lg">
+              <p class="text-sm text-musgo font-medium uppercase tracking-widest mb-3">Board Whisperer</p>
+              <p class="text-dark-gray/60 font-light leading-relaxed">
+                Traer las preguntas que nadie más le hace a la junta. Temas sistémicos en la agenda. Perspectiva de largo plazo en un mundo de agendas cortoplacistas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: Gremios & Comunidades -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">Aplicación 03</p>
+        <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-10">Gremios & Comunidades</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed">
+            Comunidades de inversión, gremios empresariales y ecosistemas de impacto que se reúnen sin profundidad. Diseñamos experiencias donde la conexión emocional potencia el poder del encuentro para traer cambios sistémicos.
+          </p>
+          <div class="slide-content d3 space-y-4">
+            <div class="flex gap-3 items-start"><div class="w-1.5 h-1.5 rounded-full bg-musgo mt-2.5 flex-shrink-0"></div><p class="text-dark-gray/60 font-light leading-relaxed">Retiros estratégicos que piden profundidad</p></div>
+            <div class="flex gap-3 items-start"><div class="w-1.5 h-1.5 rounded-full bg-musgo mt-2.5 flex-shrink-0"></div><p class="text-dark-gray/60 font-light leading-relaxed">Encuentros de comunidad con estructura y cuidado</p></div>
+            <div class="flex gap-3 items-start"><div class="w-1.5 h-1.5 rounded-full bg-musgo mt-2.5 flex-shrink-0"></div><p class="text-dark-gray/60 font-light leading-relaxed">Espacios de innovación colectiva y resonancia</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: Metodología -->
+    <section class="slide gray">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-4">Círculos de Resonancia</p>
+        <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-12">Cómo funciona</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="slide-content d1 flex gap-5">
+            <span class="font-display text-4xl text-musgo/30 flex-shrink-0">01</span>
+            <div><h3 class="font-medium text-dark-gray mb-1">El Caso</h3><p class="text-dark-gray/60 font-light leading-relaxed text-sm">Un líder expone un desafío real, actual y urgente.</p></div>
+          </div>
+          <div class="slide-content d2 flex gap-5">
+            <span class="font-display text-4xl text-musgo/30 flex-shrink-0">02</span>
+            <div><h3 class="font-medium text-dark-gray mb-1">Los Espejos</h3><p class="text-dark-gray/60 font-light leading-relaxed text-sm">5-6 pares como cajas de resonancia. Escucha profunda, no consejos.</p></div>
+          </div>
+          <div class="slide-content d3 flex gap-5">
+            <span class="font-display text-4xl text-musgo/30 flex-shrink-0">03</span>
+            <div><h3 class="font-medium text-dark-gray mb-1">La Devolución</h3><p class="text-dark-gray/60 font-light leading-relaxed text-sm">Desde la emoción y la imagen. Lo que emerge es una nueva mirada.</p></div>
+          </div>
+          <div class="slide-content d4 flex gap-5">
+            <span class="font-display text-4xl text-musgo/30 flex-shrink-0">04</span>
+            <div><h3 class="font-medium text-dark-gray mb-1">El Resultado</h3><p class="text-dark-gray/60 font-light leading-relaxed text-sm">Una nueva visión del sistema. No una receta. Conexión real.</p></div>
+          </div>
+        </div>
+        <p class="slide-content d4 text-sm text-dark-gray/40 mt-10">Basado en la Teoría U de Otto Scharmer — Escucha profunda, presencing e inteligencia colectiva.</p>
+      </div>
+    </section>
+
+    <!-- 8: Lo que cambia -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <h2 class="slide-content font-display text-4xl md:text-5xl text-dark-gray leading-none mb-12">Lo que cambia</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="slide-content d1 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-musgo mb-2">Para quien presenta</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed">Siente escucha real. Amplía perspectiva. Sale con nuevas posibilidades. Entiende que no está solo.</p>
+          </div>
+          <div class="slide-content d2 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-musgo mb-2">Para los pares</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed">Practican liderazgo regenerativo. Desarrollan escucha profunda. Se conectan auténticamente.</p>
+          </div>
+          <div class="slide-content d3 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-musgo mb-2">Para el ecosistema</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed">Red de cooperación, no competencia. Soluciones desde inteligencia colectiva. Vínculos que trascienden el evento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9: Quién facilita -->
+    <section class="slide dark">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div>
+            <p class="slide-content text-xs uppercase tracking-widest text-white/30 mb-4">Quién facilita</p>
+            <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-white leading-none mb-8">Juanita López Peláez</h2>
+            <p class="slide-content d2 text-lg text-white/60 font-light leading-relaxed">
+              20 años en la intersección del cambio sistémico. Sector público, sector privado, innovación social. Una mirada que conecta lo estratégico con lo humano.
+            </p>
+          </div>
+          <div class="slide-content d2 space-y-4">
+            <div class="border-l-2 border-musgo pl-6 space-y-4">
+              <p class="text-white/70 font-light">Gramalote — 1.000 familias. USD 120M.</p>
+              <p class="text-white/70 font-light">KPMG — Sostenibilidad Sudamérica.</p>
+              <p class="text-white/70 font-light">Mundo Común — +83.000 personas.</p>
+            </div>
+            <div class="slide-content d3 pt-6 space-y-2">
+              <p class="text-white/80 font-light">No confronto: habilito.</p>
+              <p class="text-white/80 font-light">No polarizo: integro.</p>
+              <p class="text-white/80 font-light">No moralizo: traduzco.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10: CTA -->
+    <section class="slide green">
+      <div class="max-w-4xl mx-auto px-8 md:px-16 text-center">
+        <h2 class="slide-content font-display text-4xl md:text-5xl lg:text-6xl text-white leading-none">
+          Diseñemos la experiencia<br>para tu comunidad
+        </h2>
+        <p class="slide-content d1 text-lg text-white/70 font-light max-w-2xl mx-auto mt-8">
+          Cada espacio se diseña a medida. Conversemos sobre lo que necesita tu equipo, tu junta o tu comunidad.
+        </p>
+        <a href="https://www.linkedin.com/in/juanitalopezpelaez/" target="_blank" rel="noopener noreferrer"
+           class="slide-content d2 inline-block border border-white/50 text-white px-8 py-4 text-xs uppercase tracking-widest font-medium rounded-full hover:bg-white hover:text-musgo transition-all duration-300 no-underline mt-10">
+          Conversemos &rarr;
+        </a>
+        <p class="slide-content d3 text-sm text-white/30 mt-16">&copy; 2026 Musgo — Juanita López Peláez</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    let current = 0;
+    const deck = document.getElementById('deck');
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const dotsEl = document.getElementById('dots');
+    const counterEl = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const logo = document.querySelector('.logo');
+
+    // Build dots
+    for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d)}
+
+    function goTo(n){
+      if(n<0||n>=total)return;
+      current=n;
+      deck.style.transform=`translateX(-${current*100}vw)`;
+      // Update dots
+      document.querySelectorAll('.dot').forEach((d,i)=>d.className='dot'+(i===current?' active':''));
+      // Update counter
+      counterEl.textContent=String(current+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+      // Active class for animations
+      slides.forEach((s,i)=>{if(i===current)s.classList.add('active');else s.classList.remove('active')});
+      // Update nav visibility
+      prevBtn.style.opacity=current===0?'0.3':'1';
+      prevBtn.style.pointerEvents=current===0?'none':'auto';
+      nextBtn.style.opacity=current===total-1?'0.3':'1';
+      nextBtn.style.pointerEvents=current===total-1?'none':'auto';
+      // Dark slide adjustments
+      const isDark=slides[current].classList.contains('dark')||slides[current].classList.contains('green');
+      logo.style.color=isDark?'#fff':'#353535';
+      counterEl.style.color=isDark?'rgba(255,255,255,0.3)':'rgba(53,53,53,0.3)';
+      document.querySelectorAll('.nav-arrow').forEach(a=>{a.style.borderColor=isDark?'rgba(255,255,255,0.2)':'rgba(53,53,53,0.15)';a.style.background=isDark?'rgba(0,0,0,0.3)':'rgba(255,255,255,0.8)'});
+      document.querySelectorAll('.nav-arrow svg').forEach(s=>s.style.color=isDark?'#fff':'#353535');
+      document.querySelectorAll('.dot').forEach(d=>{if(!d.classList.contains('active'))d.style.background=isDark?'rgba(255,255,255,0.2)':'rgba(53,53,53,0.15)'});
+    }
+    function go(dir){goTo(current+dir)}
+
+    // Keyboard
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1)});
+
+    // Touch/swipe
+    let tx=0,ty=0;
+    document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+    document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;const dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){dx<0?go(1):go(-1)}},{passive:true});
+
+    // Wheel (throttled)
+    let wheelLock=false;
+    document.addEventListener('wheel',e=>{if(wheelLock)return;wheelLock=true;if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){e.deltaX>0?go(1):go(-1)}else{e.deltaY>0?go(1):go(-1)}setTimeout(()=>wheelLock=false,800)},{passive:true});
+
+    // Init
+    goTo(0);
+  </script>
+</body>
+</html>

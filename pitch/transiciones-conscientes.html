@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transiciones Conscientes — Musgo | Juanita López</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Bebas Neue','Impact','sans-serif'], sans: ['Inter','system-ui','sans-serif'] },
+        colors: { musgo: { DEFAULT:'#689b61', light:'#7fb878' }, 'dark-gray':'#353535', 'light-gray':'#eeeeee' }
+      }}
+    }
+  </script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{overflow:hidden;height:100%;font-family:'Inter',system-ui,sans-serif;color:#353535;background:#fff;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4{font-family:'Bebas Neue',Impact,sans-serif;text-transform:uppercase;letter-spacing:-0.02em}
+
+    .deck{display:flex;height:100vh;transition:transform 0.7s cubic-bezier(0.25,0.1,0,1)}
+    .slide{min-width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+
+    .slide-content{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s}
+    .slide.active .slide-content{opacity:1;transform:translateY(0)}
+    .slide-content.d1{transition-delay:0.4s}.slide-content.d2{transition-delay:0.5s}.slide-content.d3{transition-delay:0.6s}.slide-content.d4{transition-delay:0.7s}
+
+    .nav-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:50;width:48px;height:48px;border-radius:50%;border:1px solid rgba(53,53,53,0.15);background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s}
+    .nav-arrow:hover{border-color:#689b61;background:#fff}
+    .nav-arrow.left{left:24px}.nav-arrow.right{right:24px}
+    .nav-arrow svg{width:18px;height:18px;color:#353535}
+
+    .dots{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px}
+    .dot{width:8px;height:8px;border-radius:50%;background:rgba(53,53,53,0.15);cursor:pointer;transition:all 0.3s}
+    .dot.active{background:#689b61;width:24px;border-radius:4px}
+
+    .counter{position:fixed;top:32px;right:32px;z-index:50;font-family:'Bebas Neue';font-size:1rem;letter-spacing:0.1em;color:rgba(53,53,53,0.3)}
+    .logo{position:fixed;top:32px;left:32px;z-index:50;font-family:'Bebas Neue';font-size:1.25rem;letter-spacing:0.05em;color:#353535;text-transform:uppercase;text-decoration:none;transition:color 0.3s}
+    .logo:hover{color:#689b61}
+
+    .slide.dark{background:#353535;color:#fff}
+    .slide.green{background:#689b61;color:#fff}
+    .slide.gray{background:#eeeeee}
+
+    @media(max-width:768px){
+      .nav-arrow{width:40px;height:40px}.nav-arrow.left{left:12px}.nav-arrow.right{right:12px}
+      .counter{top:20px;right:20px}.logo{top:20px;left:20px}
+      .dots{bottom:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#" class="logo">MUSGO</a>
+  <div class="counter" id="counter">01 / 10</div>
+
+  <button class="nav-arrow left" id="prev" onclick="go(-1)">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+  </button>
+  <button class="nav-arrow right" id="next" onclick="go(1)">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+  </button>
+
+  <div class="dots" id="dots"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- 1: Hero -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <div class="slide-content">
+          <p class="text-xs uppercase tracking-widest text-dark-gray/50 mb-6">Para personas en transición</p>
+        </div>
+        <h1 class="slide-content d1 font-display text-5xl md:text-7xl lg:text-[7rem] text-dark-gray leading-[0.88]">
+          Transiciones<br>Conscientes
+        </h1>
+        <p class="slide-content d2 text-xl md:text-2xl text-musgo font-light max-w-2xl mt-8 leading-relaxed">
+          Un espacio de contención para personas que estén atravesando transiciones. Resonar con otros en esas preguntas.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2: Quote Bridges -->
+    <section class="slide gray">
+      <div class="max-w-4xl mx-auto px-8 md:px-16 text-center">
+        <blockquote class="slide-content">
+          <p class="font-sans text-3xl md:text-4xl lg:text-5xl text-dark-gray italic leading-snug">
+            "Un cambio es situacional. Una transición es el proceso interno que lo hace real."
+          </p>
+          <p class="slide-content d1 text-sm text-dark-gray/40 mt-8">William Bridges</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 3: La Brecha -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <h2 class="slide-content font-display text-4xl md:text-5xl text-dark-gray leading-none mb-12">La Brecha</h2>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div class="slide-content d1 space-y-5">
+            <p class="text-lg text-dark-gray/60 font-light leading-relaxed">
+              Personas que han tenido carreras extraordinarias. Que han liderado equipos, construido organizaciones. Y un día llega la pregunta:
+            </p>
+            <p class="text-xl text-dark-gray italic leading-relaxed">
+              "¿Esto es lo que quiero seguir haciendo? ¿Cómo enfoco mi energía para generar el impacto que realmente importa?"
+            </p>
+          </div>
+          <div class="slide-content d2 space-y-5">
+            <p class="text-lg text-dark-gray/60 font-light leading-relaxed">
+              Hay una crisis de burnout que la gente trata con respiración y talleres tácticos. Eso es jardín. La crisis individual está conectada con una crisis sistémica — y nadie abre ese espacio.
+            </p>
+            <p class="text-lg text-musgo font-light italic leading-relaxed">
+              No estás solo en esto. Necesitas un espacio donde puedas resonar con otros que están en el mismo momento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4: Fase 01 -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">El proceso</p>
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-3">
+            <span class="slide-content font-display text-8xl md:text-9xl text-musgo/20">01</span>
+          </div>
+          <div class="md:col-span-9">
+            <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-6">Un Final</h2>
+            <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed max-w-2xl">
+              Algo termina: un rol, una etapa, una forma de hacer las cosas. Reconocerlo es el primer paso para que lo nuevo pueda llegar. La mayoría de las personas se saltan esta fase — y por eso el cambio no se integra.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: Fase 02 -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">El proceso</p>
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-3">
+            <span class="slide-content font-display text-8xl md:text-9xl text-musgo/20">02</span>
+          </div>
+          <div class="md:col-span-9">
+            <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-6">La Zona Neutra</h2>
+            <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed max-w-2xl">
+              El espacio entre lo que dejaste y lo que viene. Es confuso, incómodo, a veces doloroso. Pero es donde emerge la claridad. Esta es la fase que acompañamos — porque es la que nadie sostiene.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: Fase 03 -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-6">El proceso</p>
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-3">
+            <span class="slide-content font-display text-8xl md:text-9xl text-musgo/20">03</span>
+          </div>
+          <div class="md:col-span-9">
+            <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-6">Un Nuevo Comienzo</h2>
+            <p class="slide-content d2 text-lg text-dark-gray/60 font-light leading-relaxed max-w-2xl">
+              Lo nuevo toma forma. Con intención, con energía, con consciencia de quién eres ahora. El cambio se integra de verdad — no como un plan, sino como una convicción.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: Círculos de Palabra -->
+    <section class="slide gray">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <p class="slide-content text-xs uppercase tracking-widest text-musgo mb-4">El formato</p>
+        <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-dark-gray leading-none mb-10">Círculos de Palabra</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="slide-content d1 bg-white p-6 rounded-lg">
+            <p class="text-sm text-musgo font-medium mb-2">01 — El Círculo</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed text-sm">6-8 personas en transición. Cada uno comparte desde su proceso. El grupo sostiene con presencia, no con consejos.</p>
+          </div>
+          <div class="slide-content d2 bg-white p-6 rounded-lg">
+            <p class="text-sm text-musgo font-medium mb-2">02 — La Escucha</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed text-sm">No solamente aprendimos — más bien escuchamos y nos dimos ese regalo de escucha. Lo que emerge es claridad compartida.</p>
+          </div>
+          <div class="slide-content d3 bg-white p-6 rounded-lg">
+            <p class="text-sm text-musgo font-medium mb-2">03 — La Historia</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed text-sm">Al cierre, Juanita comparte su propia historia de transición. No como modelo — como espejo de que el camino se puede recorrer.</p>
+          </div>
+          <div class="slide-content d4 bg-white p-6 rounded-lg">
+            <p class="text-sm text-musgo font-medium mb-2">04 — Las Preguntas Guía</p>
+            <p class="text-dark-gray/60 font-light leading-relaxed text-sm">Cada participante se lleva preguntas que Juanita ha recopilado en su camino — una guía para seguir después del círculo.</p>
+          </div>
+        </div>
+        <div class="slide-content d4 flex gap-8 md:gap-16 justify-center mt-10 text-center">
+          <div><p class="font-display text-3xl text-musgo">6-8</p><p class="text-xs text-dark-gray/40 uppercase tracking-widest mt-1">Personas</p></div>
+          <div><p class="font-display text-3xl text-musgo">2h</p><p class="text-xs text-dark-gray/40 uppercase tracking-widest mt-1">Sesión</p></div>
+          <div><p class="font-display text-3xl text-musgo">Grupal</p><p class="text-xs text-dark-gray/40 uppercase tracking-widest mt-1">Siempre</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8: Esto es diferente -->
+    <section class="slide">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <h2 class="slide-content font-display text-4xl md:text-5xl text-dark-gray leading-none mb-12">Esto es diferente</h2>
+        <div class="grid md:grid-cols-2 gap-16">
+          <div class="slide-content d1 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-dark-gray/30 mb-3">No es</p>
+            <div class="flex gap-3 items-start"><span class="text-dark-gray/20 text-lg">&times;</span><p class="text-dark-gray/40 font-light text-sm leading-relaxed">Coaching individual con plan de acción</p></div>
+            <div class="flex gap-3 items-start"><span class="text-dark-gray/20 text-lg">&times;</span><p class="text-dark-gray/40 font-light text-sm leading-relaxed">Terapia o intervención psicológica</p></div>
+            <div class="flex gap-3 items-start"><span class="text-dark-gray/20 text-lg">&times;</span><p class="text-dark-gray/40 font-light text-sm leading-relaxed">Taller con slides y recomendaciones de jardín</p></div>
+            <div class="flex gap-3 items-start"><span class="text-dark-gray/20 text-lg">&times;</span><p class="text-dark-gray/40 font-light text-sm leading-relaxed">Respiración, meditación genérica, tips de bienestar</p></div>
+          </div>
+          <div class="slide-content d2 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-musgo mb-3">Sí es</p>
+            <div class="flex gap-3 items-start"><span class="text-musgo text-lg">&check;</span><p class="text-dark-gray/70 font-light text-sm leading-relaxed">Espacio de contención real, con estructura y cuidado</p></div>
+            <div class="flex gap-3 items-start"><span class="text-musgo text-lg">&check;</span><p class="text-dark-gray/70 font-light text-sm leading-relaxed">Conectar la crisis personal con la crisis sistémica</p></div>
+            <div class="flex gap-3 items-start"><span class="text-musgo text-lg">&check;</span><p class="text-dark-gray/70 font-light text-sm leading-relaxed">Acompañamiento desde la experiencia vivida</p></div>
+            <div class="flex gap-3 items-start"><span class="text-musgo text-lg">&check;</span><p class="text-dark-gray/70 font-light text-sm leading-relaxed">Conexión auténtica — una red de sostén</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9: Quién facilita -->
+    <section class="slide dark">
+      <div class="max-w-5xl mx-auto px-8 md:px-16">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div>
+            <p class="slide-content text-xs uppercase tracking-widest text-white/30 mb-4">Quién facilita</p>
+            <h2 class="slide-content d1 font-display text-4xl md:text-5xl text-white leading-none mb-8">Juanita López Peláez</h2>
+            <p class="slide-content d2 text-lg text-white/60 font-light leading-relaxed">
+              20 años en la intersección del cambio sistémico. Y un día ella misma vivió la transición. No habla desde la teoría — habla desde el camino recorrido.
+            </p>
+            <p class="slide-content d3 text-lg text-white/60 font-light leading-relaxed mt-4">
+              Lo que entrega es esa conexión: la crisis del burnout, la crisis individual, conectada con una crisis más amplia, sistémica. Ahí es donde está el fondo de la cosa.
+            </p>
+          </div>
+          <div class="slide-content d2 space-y-4">
+            <div class="border-l-2 border-musgo pl-6 space-y-4">
+              <p class="text-white/70 font-light">Gramalote — 1.000 familias. USD 120M.</p>
+              <p class="text-white/70 font-light">KPMG — Sostenibilidad Sudamérica.</p>
+              <p class="text-white/70 font-light">Mundo Común — +83.000 personas.</p>
+            </div>
+            <div class="slide-content d3 pt-6 space-y-2">
+              <p class="text-white/80 font-light">No confronto: habilito.</p>
+              <p class="text-white/80 font-light">No polarizo: integro.</p>
+              <p class="text-white/80 font-light">No moralizo: traduzco.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10: CTA -->
+    <section class="slide green">
+      <div class="max-w-4xl mx-auto px-8 md:px-16 text-center">
+        <h2 class="slide-content font-display text-4xl md:text-5xl lg:text-6xl text-white leading-none">
+          Conversemos sobre<br>tu transición
+        </h2>
+        <p class="slide-content d1 text-lg text-white/70 font-light max-w-2xl mx-auto mt-8">
+          Si estás en un momento de cambio y sientes que necesitas un espacio diferente para procesarlo — con profundidad, con otros, con sostén — este círculo es para ti.
+        </p>
+        <a href="https://www.linkedin.com/in/juanitalopezpelaez/" target="_blank" rel="noopener noreferrer"
+           class="slide-content d2 inline-block border border-white/50 text-white px-8 py-4 text-xs uppercase tracking-widest font-medium rounded-full hover:bg-white hover:text-musgo transition-all duration-300 no-underline mt-10">
+          Conversemos &rarr;
+        </a>
+        <p class="slide-content d3 text-sm text-white/30 mt-16">&copy; 2026 Musgo — Juanita López Peláez</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    let current=0;const deck=document.getElementById('deck'),slides=document.querySelectorAll('.slide'),total=slides.length,dotsEl=document.getElementById('dots'),counterEl=document.getElementById('counter'),prevBtn=document.getElementById('prev'),nextBtn=document.getElementById('next'),logo=document.querySelector('.logo');
+    for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d)}
+    function goTo(n){if(n<0||n>=total)return;current=n;deck.style.transform=`translateX(-${current*100}vw)`;document.querySelectorAll('.dot').forEach((d,i)=>d.className='dot'+(i===current?' active':''));counterEl.textContent=String(current+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');slides.forEach((s,i)=>{if(i===current)s.classList.add('active');else s.classList.remove('active')});prevBtn.style.opacity=current===0?'0.3':'1';prevBtn.style.pointerEvents=current===0?'none':'auto';nextBtn.style.opacity=current===total-1?'0.3':'1';nextBtn.style.pointerEvents=current===total-1?'none':'auto';const isDark=slides[current].classList.contains('dark')||slides[current].classList.contains('green');logo.style.color=isDark?'#fff':'#353535';counterEl.style.color=isDark?'rgba(255,255,255,0.3)':'rgba(53,53,53,0.3)';document.querySelectorAll('.nav-arrow').forEach(a=>{a.style.borderColor=isDark?'rgba(255,255,255,0.2)':'rgba(53,53,53,0.15)';a.style.background=isDark?'rgba(0,0,0,0.3)':'rgba(255,255,255,0.8)'});document.querySelectorAll('.nav-arrow svg').forEach(s=>s.style.color=isDark?'#fff':'#353535');document.querySelectorAll('.dot').forEach(d=>{if(!d.classList.contains('active'))d.style.background=isDark?'rgba(255,255,255,0.2)':'rgba(53,53,53,0.15)'})}
+    function go(dir){goTo(current+dir)}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1)});
+    let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?go(1):go(-1)}},{passive:true});
+    let wheelLock=false;document.addEventListener('wheel',e=>{if(wheelLock)return;wheelLock=true;if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){e.deltaX>0?go(1):go(-1)}else{e.deltaY>0?go(1):go(-1)}setTimeout(()=>wheelLock=false,800)},{passive:true});
+    goTo(0);
+  </script>
+</body>
+</html>
