@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musgo — LinkedIn Banners × Juanita López</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 40px 20px;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 4px;
+      color: #689b61;
+    }
+    .page-header p {
+      color: #777;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* Safe zone legend */
+    .legend {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 24px 32px;
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.8;
+    }
+    .legend h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .legend .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+    .tag-red { background: rgba(255,80,80,0.2); color: #ff5050; }
+    .tag-yellow { background: rgba(255,200,50,0.2); color: #ffc832; }
+    .tag-green { background: rgba(104,155,97,0.2); color: #689b61; }
+
+    .banner-wrapper {
+      max-width: 1600px;
+      margin: 0 auto 50px;
+    }
+    .banner-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #689b61;
+      margin-bottom: 6px;
+    }
+    .banner-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 14px;
+      max-width: 600px;
+    }
+
+    /* Banner container — exact LinkedIn dimensions */
+    .banner {
+      width: 1584px;
+      height: 396px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      transform-origin: top left;
+    }
+
+    /* Toggle for safe zone overlay */
+    .toggle-zones {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      cursor: pointer;
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background: transparent;
+      transition: all 0.2s;
+    }
+    .toggle-zones:hover { border-color: #689b61; color: #689b61; }
+
+    /* Safe zone overlays (togglable) */
+    .safe-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .show-zones .safe-overlay { display: block; }
+    /* Dead zone: bottom-left 568x264 */
+    .safe-overlay .dead-zone {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 568px;
+      height: 264px;
+      background: rgba(255, 50, 50, 0.25);
+      border: 2px dashed rgba(255, 50, 50, 0.6);
+    }
+    .safe-overlay .dead-zone::after {
+      content: 'FOTO PERFIL';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,50,50,0.8);
+      letter-spacing: 3px;
+    }
+    /* Mobile crop zone: sides get cut */
+    .safe-overlay .mobile-crop-left {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 117px;
+      background: rgba(255,200,50,0.1);
+      border-right: 1px dashed rgba(255,200,50,0.4);
+    }
+    .safe-overlay .mobile-crop-right {
+      position: absolute;
+      top: 0; bottom: 0; right: 0;
+      width: 117px;
+      background: rgba(255,200,50,0.1);
+      border-left: 1px dashed rgba(255,200,50,0.4);
+    }
+    /* Mobile bottom crop */
+    .safe-overlay .mobile-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 132px;
+      background: rgba(255,150,50,0.12);
+      border-top: 1px dashed rgba(255,150,50,0.5);
+    }
+    .safe-overlay .mobile-bottom::after {
+      content: 'MOBILE: FOTO PERFIL CENTRADA AQUÍ';
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,150,50,0.7);
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    /* Responsive scaling */
+    @media (max-width: 1650px) {
+      .banner { transform: scale(0.58); margin-bottom: -166px; }
+    }
+    @media (max-width: 1000px) {
+      .banner { transform: scale(0.38); margin-bottom: -245px; }
+    }
+    @media (max-width: 650px) {
+      .banner { transform: scale(0.24); margin-bottom: -300px; }
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #222;
+      margin: 20px auto 40px;
+      max-width: 1584px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       ALL BANNERS — TEXT IN SAFE ZONE (center-right area)
+       Text starts at x:450+ to clear profile photo
+       Text stays above y:240 to clear mobile bottom crop
+       Primary text: 80-100px Bebas Neue for mobile readability
+    ═══════════════════════════════════════════════════════════ */
+
+    /* ─── BANNER 1 — DARK MINIMAL ─── */
+    .b1 { background: #171717; }
+    .b1 .accent-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent 0%, #689b61 30%, #689b61 70%, transparent 100%);
+    }
+    .b1 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+    }
+    .b1 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 90px;
+      color: #fff;
+      letter-spacing: 4px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b1 .headline em { font-style: normal; color: #689b61; }
+    .b1 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #666;
+      margin-top: 18px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .b1 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #689b61;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 2 — WHITE CLEAN ─── */
+    .b2 { background: #ffffff; }
+    .b2 .bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: #689b61;
+    }
+    .b2 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+    }
+    .b2 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 86px;
+      color: #353535;
+      letter-spacing: 3px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b2 .headline em { font-style: normal; color: #689b61; }
+    .b2 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: #aaa;
+      margin-top: 16px;
+      font-weight: 300;
+    }
+    .b2 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #689b61;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 3 — FOREST SOLID ─── */
+    .b3 {
+      background: #1a3018;
+    }
+    .b3 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+      width: 1100px;
+    }
+    .b3 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      color: #fff;
+      letter-spacing: 5px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b3 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 18px;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    .b3 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      color: #fff;
+      letter-spacing: 18px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 4 — RIGHT PANEL ─── */
+    .b4 { background: #151515; }
+    .b4 .green-panel {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 460px;
+      background: #689b61;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .b4 .green-panel .brand-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 14px;
+      text-transform: uppercase;
+    }
+    .b4 .content {
+      position: absolute;
+      left: 580px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: left;
+      max-width: 580px;
+    }
+    .b4 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 78px;
+      color: #ffffff;
+      letter-spacing: 3px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b4 .headline em { font-style: normal; color: #689b61; }
+    .b4 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+
+    /* ─── BANNER 5 — CENTERED BOLD ─── */
+    .b5 { background: #f5f5f0; }
+    .b5 .accent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid rgba(104,155,97,0.12);
+    }
+    .b5 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+      width: 1200px;
+    }
+    .b5 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 92px;
+      color: #353535;
+      letter-spacing: 5px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b5 .headline em { font-style: normal; color: #689b61; }
+    .b5 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      color: #aaa;
+      margin-top: 18px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .b5 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #689b61;
+      letter-spacing: 18px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 6 — DARK PREMIUM + SPEAKER ─── */
+    .b6 { background: #0e0e0e; }
+    .b6 .glow {
+      position: absolute;
+      right: 200px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(104,155,97,0.1) 0%, transparent 70%);
+    }
+    .b6 .line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #689b61 50%, transparent);
+    }
+    .b6 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+    }
+    .b6 .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #689b61;
+      margin-bottom: 14px;
+    }
+    .b6 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 84px;
+      color: #fff;
+      letter-spacing: 3px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b6 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: #555;
+      margin-top: 16px;
+      font-weight: 300;
+    }
+    .b6 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #689b61;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 7 — EDITORIAL QUOTE ─── */
+    .b7 {
+      background: linear-gradient(160deg, #1e1a14 0%, #2a2520 50%, #353028 100%);
+    }
+    .b7 .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+      width: 1100px;
+    }
+    .b7 .quote-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: rgba(104,155,97,0.2);
+      line-height: 0.5;
+    }
+    .b7 .headline {
+      font-family: 'Inter', sans-serif;
+      font-size: 42px;
+      color: #fff;
+      line-height: 1.3;
+      font-weight: 300;
+    }
+    .b7 .headline strong { font-weight: 600; color: #689b61; }
+    .b7 .attribution {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #666;
+      margin-top: 16px;
+      letter-spacing: 2px;
+    }
+    .b7 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 8 — ALL GREEN ─── */
+    .b8 { background: #689b61; }
+    .b8 .texture {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.15) 0%, transparent 60%);
+    }
+    .b8 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+      z-index: 2;
+    }
+    .b8 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 94px;
+      color: #fff;
+      letter-spacing: 4px;
+      line-height: 0.88;
+      text-transform: uppercase;
+    }
+    .b8 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 16px;
+      font-weight: 300;
+    }
+    .b8 .brand {
+      position: absolute;
+      right: 100px;
+      top: 34px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #1a3018;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* ─── BANNER 9 — GEOMETRIC CIRCLES ─── */
+    .b9 { background: #fafaf7; }
+    .b9 .circle-1 {
+      position: absolute;
+      left: 180px; top: 50%;
+      transform: translateY(-50%);
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(104,155,97,0.12);
+    }
+    .b9 .circle-2 {
+      position: absolute;
+      left: 280px; top: 50%;
+      transform: translateY(-50%);
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(104,155,97,0.06);
+    }
+    .b9 .circle-3 {
+      position: absolute;
+      left: 350px; top: 50%;
+      transform: translateY(-50%);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: #689b61;
+    }
+    .b9 .content {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-55%);
+      text-align: right;
+    }
+    .b9 .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #689b61;
+      margin-bottom: 12px;
+    }
+    .b9 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: #353535;
+      letter-spacing: 3px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .b9 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #aaa;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+    .b9 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: #689b61;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ─── BANNER 10 — DIAGONAL SPLIT ─── */
+    .b10 { background: #171717; }
+    .b10 .diagonal {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 55%;
+      background: #689b61;
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 5% 100%);
+    }
+    .b10 .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+      width: 900px;
+      z-index: 2;
+    }
+    .b10 .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 88px;
+      color: #fff;
+      letter-spacing: 4px;
+      line-height: 0.9;
+      text-transform: uppercase;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .b10 .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 16px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .b10 .brand {
+      position: absolute;
+      right: 100px;
+      top: 38px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      color: #fff;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>MUSGO — LINKEDIN BANNERS</h1>
+    <p>Juanita López Peláez · 1584 × 396px · Abril 2026</p>
+    <p style="color:#555; margin-top:4px; font-size:12px;">Diseñado por Monza Lab</p>
+  </div>
+
+  <!-- Safe Zone Legend -->
+  <div class="legend">
+    <h3>LINKEDIN SAFE ZONES</h3>
+    <p>
+      <span class="tag tag-red">ROJO</span> Zona muerta — la foto de perfil la tapa (568×264px, bottom-left)<br>
+      <span class="tag tag-yellow">NARANJA</span> En mobile, el tercio inferior queda oculto (foto centrada abajo) + lados recortados<br>
+      <span class="tag tag-green">VERDE</span> Todo el texto está en la zona segura: centro-derecha, parte superior<br><br>
+      <strong style="color:#fff;">Todos los banners tienen el texto a la derecha o centrado, lejos de la foto de perfil.</strong><br>
+      <span style="color:#666;">Font: 80-96px Bebas Neue → legible incluso en mobile.</span>
+    </p>
+  </div>
+
+  <div style="text-align:center; margin-bottom:40px;">
+    <button class="toggle-zones" onclick="document.body.classList.toggle('show-zones')">
+      ◉ Mostrar / Ocultar zonas seguras
+    </button>
+  </div>
+
+  <!-- ═══ BANNER 1 — DARK MINIMAL ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 01 — Dark Minimal</div>
+    <div class="banner-desc">Fondo oscuro, texto a la derecha. Elegante, limpio, legible en mobile.</div>
+    <div class="banner b1">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="accent-line"></div>
+      <div class="content">
+        <div class="headline">
+          Acompaño <em>transiciones</em><br>
+          regenerativas
+        </div>
+        <div class="sub">Para personas y organizaciones.</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 2 — WHITE CLEAN ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 02 — White Clean</div>
+    <div class="banner-desc">Fondo blanco, profesional. Se lee perfecto en cualquier dispositivo.</div>
+    <div class="banner b2">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="bar"></div>
+      <div class="content">
+        <div class="headline">
+          Acompaño <em>transiciones</em><br>
+          regenerativas
+        </div>
+        <div class="sub">Para personas y organizaciones.</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 3 — FOREST GRADIENT ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 03 — Forest Solid</div>
+    <div class="banner-desc">Fondo bosque sólido. Texto a la derecha con tipografía gigante (96px).</div>
+    <div class="banner b3">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="content">
+        <div class="headline">
+          Acompaño transiciones<br>
+          regenerativas
+        </div>
+        <div class="sub">Personas · Equipos · Organizaciones</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 4 — RIGHT PANEL ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 04 — Right Panel</div>
+    <div class="banner-desc">Panel verde a la derecha (no tapa la foto). Texto en zona segura central.</div>
+    <div class="banner b4">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="green-panel">
+        <div class="brand-text">MUSGO</div>
+      </div>
+      <div class="content">
+        <div class="headline">
+          Acompaño<br>
+          <em>transiciones</em><br>
+          regenerativas
+        </div>
+        <div class="sub">Personas y organizaciones.</div>
+      </div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 5 — CENTERED BOLD ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 05 — Centered Bold</div>
+    <div class="banner-desc">Centrado, minimalista, fondo cálido. 92px de impacto.</div>
+    <div class="banner b5">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="accent"></div>
+      <div class="content">
+        <div class="headline">
+          Acompaño <em>transiciones</em><br>
+          regenerativas
+        </div>
+        <div class="sub">Personas · Equipos · Organizaciones</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 6 — DARK PREMIUM ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 06 — Dark Premium + Speaker</div>
+    <div class="banner-desc">Oscuro con "Speaker · Facilitadora · Consultora". Posicionamiento para charlas.</div>
+    <div class="banner b6">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="glow"></div>
+      <div class="line"></div>
+      <div class="content">
+        <div class="label">Speaker · Facilitadora · Consultora</div>
+        <div class="headline">
+          Acompaño transiciones<br>
+          regenerativas
+        </div>
+        <div class="sub">Para personas y organizaciones.</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 7 — EDITORIAL QUOTE ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 07 — Editorial Quote</div>
+    <div class="banner-desc">Estilo cita editorial. Usa el lema "La evolución también sucede adentro."</div>
+    <div class="banner b7">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="content">
+        <div class="quote-mark">"</div>
+        <div class="headline">
+          La evolución también sucede <strong>adentro.</strong><br>
+          Acompaño transiciones regenerativas.
+        </div>
+        <div class="attribution">— Juanita López Peláez · Fundadora de Musgo</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 8 — ALL GREEN ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 08 — Bold Green</div>
+    <div class="banner-desc">Todo verde musgo. Disruptivo en LinkedIn, diferente a todo. Texto a la derecha.</div>
+    <div class="banner b8">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="texture"></div>
+      <div class="content">
+        <div class="headline">
+          La evolución<br>
+          también sucede<br>
+          adentro.
+        </div>
+        <div class="sub">Transiciones regenerativas · Personas y organizaciones</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 9 — GEOMETRIC ─── -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 09 — Geometric</div>
+    <div class="banner-desc">Fondo claro, círculos decorativos a la izquierda (zona de foto), texto seguro a la derecha.</div>
+    <div class="banner b9">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+      <div class="circle-3"></div>
+      <div class="content">
+        <div class="label">Transiciones regenerativas</div>
+        <div class="headline">
+          Acompaño el cambio<br>
+          que se vive adentro
+        </div>
+        <div class="sub">Para personas y organizaciones con visión.</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <!-- ═══ BANNER 10 — DIAGONAL ═══ -->
+  <div class="banner-wrapper">
+    <div class="banner-label">Opción 10 — Diagonal Split</div>
+    <div class="banner-desc">División diagonal. La zona oscura queda donde va la foto, texto centrado en zona segura.</div>
+    <div class="banner b10">
+      <div class="safe-overlay">
+        <div class="dead-zone"></div>
+        <div class="mobile-crop-left"></div>
+        <div class="mobile-crop-right"></div>
+        <div class="mobile-bottom"></div>
+      </div>
+      <div class="diagonal"></div>
+      <div class="content">
+        <div class="headline">
+          Acompaño transiciones<br>
+          regenerativas
+        </div>
+        <div class="sub">Personas · Equipos · Organizaciones</div>
+      </div>
+      <div class="brand">MUSGO</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding:40px 0 80px; color:#555; font-size:12px;">
+    <p>Monza Lab × Juanita López Peláez · Abril 2026</p>
+    <p style="margin-top:6px; color:#666;">Tip: Click "Mostrar zonas seguras" para verificar que el texto no se tapa.</p>
+    <p style="margin-top:4px; color:#444;">Para exportar: screenshot de cada banner a 1584×396px</p>
+  </div>
+
+</body>
+</html>

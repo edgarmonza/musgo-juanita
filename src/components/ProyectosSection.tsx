@@ -4,6 +4,12 @@ import { ArrowRight } from "lucide-react";
 
 const proyectos = [
   {
+    name: "Terrasos",
+    role: "Advisor",
+    description: "Advisory estratégico en transiciones regenerativas. Acompañamiento a la organización líder en biodiversidad y bonos de hábitat en Latinoamérica.",
+    status: "En curso",
+  },
+  {
     name: "Mundo Común",
     role: "Co-fundadora",
     description: "Iniciativa financiada por Clima Breakthrough. Dos años construyendo desde cero: podcast, experiencias diseñadas con prácticas de Theory U. 83.000 personas alcanzadas.",

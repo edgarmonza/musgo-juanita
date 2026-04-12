@@ -2,6 +2,19 @@ import { motion } from "framer-motion";
 
 const proyectos = [
   {
+    name: "Terrasos",
+    role: "Advisor estratégico",
+    status: "En curso",
+    year: "2024 — presente",
+    description: "Acompañamiento estratégico a la organización líder en biodiversidad y bonos de hábitat en Latinoamérica. Un advisory de 18 meses donde traduzco la visión regenerativa en acción organizacional.",
+    details: [
+      "Advisory estratégico — 18 meses",
+      "Líder regional en biodiversidad y bonos de hábitat",
+      "Traducción entre estrategia y transformación interna",
+      "Acompañamiento a equipos en transición regenerativa",
+    ],
+  },
+  {
     name: "Mundo Común",
     role: "Co-fundadora y directora",
     status: "Completado",
