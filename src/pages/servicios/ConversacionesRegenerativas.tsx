@@ -13,25 +13,25 @@ const aplicaciones = [
     num: "01",
     title: "Formación & Academia",
     brecha:
-      "Los programas ejecutivos empaquetan contenido sin dejar espacio para que algo real pase entre las personas.",
+      "Mucho contenido, poca transformación. Los participantes se van con apuntes, no con experiencias que cambien algo.",
     solucion:
-      "Diseñamos experiencias de formación donde inyectamos metodologías de pensamiento sistémico desde la autoconciencia — para que el grupo conecte de verdad.",
+      "Inyectamos pensamiento sistémico y autoconciencia en el programa para que el grupo conecte de verdad y el aprendizaje se quede.",
   },
   {
     num: "02",
     title: "Board Whisperer",
     brecha:
-      "La conversación en las juntas a veces se queda en la capa de control y resultados. Cuesta ir a lo más profundo — a los temas sistémicos que definen el futuro.",
+      "La junta habla de números y control. Los temas sistémicos que definen el futuro no tienen espacio en la agenda.",
     solucion:
-      "Traemos las preguntas que nadie más hace y hacemos de la junta un mejor contenedor para el pensamiento estratégico y el cambio sistémico.",
+      "Traemos las preguntas que nadie más hace y convertimos la junta en un contenedor para el pensamiento estratégico de largo plazo.",
   },
   {
     num: "03",
     title: "Gremios & Comunidades",
     brecha:
-      "Comunidades de inversión, gremios empresariales y ecosistemas de impacto que no logran extraer todo el potencial de la inteligencia colectiva de sus encuentros.",
+      "Los encuentros generan contactos, no vínculos. La inteligencia colectiva del grupo se queda sin activar.",
     solucion:
-      "Diseñamos experiencias donde la conexión emocional potencia el poder del encuentro para activar inteligencia colectiva frente a desafíos reales.",
+      "Facilitamos experiencias donde la conexión emocional potencia la inteligencia colectiva frente a desafíos compartidos.",
   },
 ];
 
@@ -89,7 +89,7 @@ const impacto = [
   },
 ];
 
-export default function EspaciosRegenerativos() {
+export default function ConversacionesRegenerativas() {
   return (
     <div className="min-h-screen">
       {/* ─── 1. HERO ─── */}
@@ -102,7 +102,7 @@ export default function EspaciosRegenerativos() {
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-white/40 mb-6"
           >
-            Espacios Regenerativos
+            Conversaciones Regenerativas
           </motion.p>
 
           <motion.h1
@@ -110,9 +110,9 @@ export default function EspaciosRegenerativos() {
             transition={{ ...fadeUp.transition, delay: 0.1 }}
             className="font-display text-6xl md:text-7xl lg:text-[7rem] text-white leading-[0.88] uppercase"
           >
-            Espacios
+            Conversaciones
             <br />
-            Regenerativos
+            Regenerativas
           </motion.h1>
 
           <motion.p
@@ -128,7 +128,7 @@ export default function EspaciosRegenerativos() {
             transition={{ ...fadeUp.transition, delay: 0.3 }}
             className="text-lg text-white/60 font-light leading-relaxed max-w-3xl mt-6"
           >
-            Creamos espacios donde la gente se encuentra de verdad.
+            Creamos conversaciones donde la gente se encuentra de verdad.
             Activamos inteligencia colectiva para mover desafíos reales.
           </motion.p>
 
@@ -200,9 +200,9 @@ export default function EspaciosRegenerativos() {
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground leading-none uppercase mb-16"
           >
-            Tres espacios donde
+            Tres conversaciones
             <br />
-            esto transforma.
+            que transforman.
           </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -253,7 +253,7 @@ export default function EspaciosRegenerativos() {
           >
             Diseñamos 90 minutos para que emerja lo que importa. Un líder
             presenta su caso a 5-6 pares. No es una dinámica de integración —
-            acompañamos un espacio con estructura y profundidad.
+            facilitamos una conversación con estructura y profundidad.
           </motion.p>
 
           <div className="grid md:grid-cols-2 gap-10">
@@ -362,7 +362,10 @@ export default function EspaciosRegenerativos() {
                   KPMG — Sostenibilidad Sudamérica.
                 </p>
                 <p className="text-foreground font-light">
-                  Mundo Común — +83.000 personas.
+                  Mundo Común — Co-fundadora. +83.000 personas.
+                </p>
+                <p className="text-foreground font-light">
+                  Terrasos — Regeneración y capital natural.
                 </p>
               </div>
 
@@ -397,7 +400,7 @@ export default function EspaciosRegenerativos() {
             transition={{ ...fadeUp.transition, delay: 0.1 }}
             className="text-lg text-white/60 font-light max-w-2xl mx-auto mt-8"
           >
-            Cada espacio lo diseñamos a medida. Conversemos sobre lo que necesita
+            Cada conversación la diseñamos a medida. Cuéntame qué necesita
             tu equipo, tu junta o tu comunidad.
           </motion.p>
 

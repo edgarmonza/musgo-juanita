@@ -7,13 +7,13 @@ import mossStream from "@/assets/moss-stream.jpg";
 
 const servicios = [
   {
-    id: "espacios-regenerativos",
-    title: "Espacios Regenerativos",
+    id: "conversaciones-regenerativas",
+    title: "Conversaciones Regenerativas",
     subtitle: "Para VPs y Directivos",
-    description: "Rediseño espacios corporativos para que la gente se encuentre de verdad. Círculos de confianza, narrativa y experiencia. Cada ejercicio tiene teoría que lo justifica. Sales con conexiones reales y energía renovada.",
-    link: "/servicios/espacios-regenerativos",
+    description: "Facilito las conversaciones que los equipos necesitan pero nunca tienen. Escucha real, conexión profunda y la claridad que sale cuando la gente para y se mira a los ojos.",
+    link: "/servicios/conversaciones-regenerativas",
     image: juanitaRiendo,
-    imageAlt: "Juanita facilitando un círculo de resonancia",
+    imageAlt: "Juanita facilitando una conversación regenerativa",
     icon: null,
     gradient: "",
   },

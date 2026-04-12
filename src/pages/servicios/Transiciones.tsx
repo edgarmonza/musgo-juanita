@@ -367,7 +367,10 @@ export default function Transiciones() {
                   KPMG — Sostenibilidad Sudamérica.
                 </p>
                 <p className="text-foreground/70 font-light">
-                  Mundo Común — +83.000 personas.
+                  Mundo Común — Co-fundadora. +83.000 personas.
+                </p>
+                <p className="text-foreground/70 font-light">
+                  Terrasos — Regeneración y capital natural.
                 </p>
               </div>
               <div className="space-y-2">

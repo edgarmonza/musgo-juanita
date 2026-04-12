@@ -35,12 +35,12 @@ export default function SpeakerSection() {
           >
             <img
               src={juanitaConversational}
-              alt="Juanita López facilitando un espacio regenerativo"
+              alt="Juanita López facilitando una conversación regenerativa"
               className="w-full h-full object-cover object-top"
             />
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
               <p className="text-white text-sm font-light">
-                Facilitación de espacios regenerativos
+                Facilitación de conversaciones regenerativas
               </p>
             </div>
           </motion.div>

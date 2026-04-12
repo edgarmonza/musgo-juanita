@@ -421,7 +421,10 @@ export default function Regeneracion360() {
                   KPMG — Sostenibilidad Sudamérica.
                 </p>
                 <p className="text-foreground font-light">
-                  Mundo Común — +83.000 personas.
+                  Mundo Común — Co-fundadora. +83.000 personas.
+                </p>
+                <p className="text-foreground font-light">
+                  Terrasos — Regeneración y capital natural.
                 </p>
               </motion.div>
 

@@ -2,12 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import EspaciosRegenerativos from "./pages/servicios/EspaciosRegenerativos";
+import ConversacionesRegenerativas from "./pages/servicios/ConversacionesRegenerativas";
 import Regeneracion360 from "./pages/servicios/Regeneracion360";
 import Transiciones from "./pages/servicios/Transiciones";
 import SpeakerPage from "./pages/Speaker";
@@ -26,7 +26,8 @@ const App = () => (
         <Header />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/servicios/espacios-regenerativos" element={<EspaciosRegenerativos />} />
+          <Route path="/servicios/conversaciones-regenerativas" element={<ConversacionesRegenerativas />} />
+          <Route path="/servicios/espacios-regenerativos" element={<Navigate to="/servicios/conversaciones-regenerativas" replace />} />
           <Route path="/servicios/regeneracion-360" element={<Regeneracion360 />} />
           <Route path="/servicios/transiciones" element={<Transiciones />} />
           <Route path="/speaker" element={<SpeakerPage />} />

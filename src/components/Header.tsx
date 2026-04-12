@@ -10,7 +10,7 @@ const navLinks = [
 ];
 
 const servicios = [
-  { to: "/servicios/espacios-regenerativos", label: "Espacios Regenerativos" },
+  { to: "/servicios/conversaciones-regenerativas", label: "Conversaciones Regenerativas" },
   { to: "/servicios/regeneracion-360", label: "Regeneración 360°" },
   { to: "/servicios/transiciones", label: "Transiciones Conscientes" },
 ];

@@ -71,7 +71,17 @@ export default function SobreMiSection() {
                 <div>
                   <p className="font-medium text-foreground mb-1">Innovación Social</p>
                   <p className="text-muted-foreground font-light">
-                    Mundo Común — +83.000 personas impactadas.
+                    Co-fundadora de Mundo Común — +83.000 personas impactadas.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-1 bg-primary/30 rounded-full flex-shrink-0"></div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Regeneración & Biodiversidad</p>
+                  <p className="text-muted-foreground font-light">
+                    Terrasos — Estrategia de regeneración y capital natural.
                   </p>
                 </div>
               </div>

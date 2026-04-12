@@ -33,8 +33,8 @@ export default function Footer() {
           {/* Cómo trabajo */}
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-widest text-white/30 mb-4">Cómo trabajo</p>
-            <Link to="/servicios/espacios-regenerativos" className="block text-sm text-white/50 hover:text-white transition-colors duration-300">
-              Espacios Regenerativos
+            <Link to="/servicios/conversaciones-regenerativas" className="block text-sm text-white/50 hover:text-white transition-colors duration-300">
+              Conversaciones Regenerativas
             </Link>
             <Link to="/servicios/regeneracion-360" className="block text-sm text-white/50 hover:text-white transition-colors duration-300">
               Regeneración 360°

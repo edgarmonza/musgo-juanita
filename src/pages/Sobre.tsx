@@ -19,6 +19,11 @@ const trayectoria = [
     description: "+83.000 personas conectadas con iniciativas de impacto real. La prueba de que la innovación social se construye desde la comunidad, no desde el escritorio.",
   },
   {
+    period: "2022 — presente",
+    title: "Terrasos — Regeneración & Capital Natural",
+    description: "Estrategia de regeneración y biodiversidad. Donde la sostenibilidad deja de ser un reporte y se convierte en impacto real sobre los ecosistemas.",
+  },
+  {
     period: "2024 — presente",
     title: "Musgo — Transiciones Regenerativas",
     description: "Todo converge aquí. 20 años de experiencia destilados en una práctica que cierra la brecha entre lo que las organizaciones dicen y lo que viven.",
