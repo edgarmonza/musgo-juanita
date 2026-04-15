@@ -71,7 +71,7 @@ export default function SobreMiSection() {
                 <div>
                   <p className="font-medium text-foreground mb-1">Innovación Social</p>
                   <p className="text-muted-foreground font-light">
-                    Mundo Común — Miembro del equipo fundador. +83.000 personas impactadas.
+                    Mundo Común — Directora · Equipo fundador. +83.000 personas impactadas.
                   </p>
                 </div>
               </div>

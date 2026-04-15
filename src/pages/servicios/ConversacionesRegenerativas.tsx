@@ -362,7 +362,7 @@ export default function ConversacionesRegenerativas() {
                   KPMG — Sostenibilidad Sudamérica.
                 </p>
                 <p className="text-foreground font-light">
-                  Mundo Común — Equipo fundador. +83.000 personas.
+                  Mundo Común — Directora · Equipo fundador. +83.000 personas.
                 </p>
                 <p className="text-foreground font-light">
                   Terrasos — Regeneración y capital natural.
