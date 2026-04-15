@@ -15,7 +15,7 @@ const trayectoria = [
   },
   {
     period: "2018 — presente",
-    title: "Mundo Común — Co-fundadora",
+    title: "Mundo Común — Equipo Fundador",
     description: "+83.000 personas conectadas con iniciativas de impacto real. La prueba de que la innovación social se construye desde la comunidad, no desde el escritorio.",
   },
   {
