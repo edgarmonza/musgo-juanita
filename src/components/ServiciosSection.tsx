@@ -102,7 +102,7 @@ export default function ServiciosSection() {
                     slug={servicio.image}
                     alt={servicio.imageAlt}
                     sizes="(min-width: 768px) 25vw, 100vw"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>
 

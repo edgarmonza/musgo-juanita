@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Musgo">
+  <rect width="64" height="64" rx="10" fill="#689b61"/>
+  <!-- Monumental M, Bebas-style: condensed verticals + sharp inner peak -->
+  <path
+    d="M 17 12 L 17 52 L 24 52 L 24 24 L 32 44 L 40 24 L 40 52 L 47 52 L 47 12 L 39 12 L 32 30 L 25 12 Z"
+    fill="#ffffff"
+  />
+</svg>
