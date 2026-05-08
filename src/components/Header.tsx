@@ -23,10 +23,15 @@ export default function Header() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // On homepage, header starts transparent over dark hero
-  const isHomepage = location.pathname === "/";
-  // When on homepage and not scrolled, use light (white) text for contrast over dark hero
-  const isOverHero = isHomepage && !isScrolled;
+  // Pages whose hero starts on a dark background — header needs light text
+  // until the user scrolls past the hero.
+  const darkHeroPaths = [
+    "/",
+    "/servicios/conversaciones-regenerativas",
+    "/servicios/regeneracion-360",
+    "/servicios/transiciones",
+  ];
+  const isOverHero = darkHeroPaths.includes(location.pathname) && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,6 +94,7 @@ export default function Header() {
             <Link
               key={link.to}
               to={link.to}
+              aria-current={isActive(link.to) ? "page" : undefined}
               className={`text-xs uppercase tracking-widest transition-colors duration-300 link-elegant ${linkColor(isActive(link.to))}`}
             >
               {link.label}
@@ -131,6 +137,7 @@ export default function Header() {
                     <Link
                       key={servicio.to}
                       to={servicio.to}
+                      aria-current={isActive(servicio.to) ? "page" : undefined}
                       className={`block px-5 py-3.5 text-sm transition-all duration-200 ${
                         isOverHero
                           ? isActive(servicio.to)
@@ -192,6 +199,7 @@ export default function Header() {
                 <Link
                   key={link.to}
                   to={link.to}
+                  aria-current={isActive(link.to) ? "page" : undefined}
                   className={`text-sm uppercase tracking-wider py-2 transition-colors ${
                     isActive(link.to)
                       ? "text-white"

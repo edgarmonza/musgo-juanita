@@ -33,22 +33,30 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-foreground focus:text-background focus:px-4 focus:py-2 focus:rounded-md focus:text-sm focus:font-medium"
+        >
+          Saltar al contenido
+        </a>
         <Header />
-        <Suspense fallback={<RouteFallback />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/servicios/conversaciones-regenerativas" element={<ConversacionesRegenerativas />} />
-            <Route path="/servicios/espacios-regenerativos" element={<Navigate to="/servicios/conversaciones-regenerativas" replace />} />
-            <Route path="/servicios/regeneracion-360" element={<Regeneracion360 />} />
-            <Route path="/servicios/transiciones" element={<Transiciones />} />
-            <Route path="/speaker" element={<SpeakerPage />} />
-            <Route path="/proyectos" element={<ProyectosPage />} />
-            <Route path="/sobre" element={<SobrePage />} />
-            <Route path="/contacto" element={<ContactoPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <main id="main">
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/servicios/conversaciones-regenerativas" element={<ConversacionesRegenerativas />} />
+              <Route path="/servicios/espacios-regenerativos" element={<Navigate to="/servicios/conversaciones-regenerativas" replace />} />
+              <Route path="/servicios/regeneracion-360" element={<Regeneracion360 />} />
+              <Route path="/servicios/transiciones" element={<Transiciones />} />
+              <Route path="/speaker" element={<SpeakerPage />} />
+              <Route path="/proyectos" element={<ProyectosPage />} />
+              <Route path="/sobre" element={<SobrePage />} />
+              <Route path="/contacto" element={<ContactoPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
       </BrowserRouter>
     </TooltipProvider>

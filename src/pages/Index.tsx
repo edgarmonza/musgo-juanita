@@ -9,15 +9,13 @@ import CTASection from "@/components/CTASection";
 export default function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <main>
-        <HeroSection />
-        <GapSection />
-        <ServiciosSection />
-        <SpeakerSection />
-        <ProyectosSection />
-        <SobreMiSection />
-        <CTASection />
-      </main>
+      <HeroSection />
+      <GapSection />
+      <ServiciosSection />
+      <SpeakerSection />
+      <ProyectosSection />
+      <SobreMiSection />
+      <CTASection />
     </div>
   );
 }

@@ -37,6 +37,36 @@
       type="image/webp"
       fetchpriority="high"
     />
+
+    <link rel="canonical" href="https://musgo.space/" />
+
+    <!-- Structured data: Person + WebSite for richer SERP results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://musgo.space/#person",
+            "name": "Juanita López Peláez",
+            "url": "https://musgo.space/",
+            "jobTitle": "Facilitadora de transiciones regenerativas",
+            "description": "Acompaño personas y organizaciones a navegar cambios complejos sin fragmentarse. Conecto miradas, traduzco tensión en claridad.",
+            "sameAs": ["https://www.linkedin.com/in/juanitalopezpelaez/"],
+            "email": "juanita@musgo.space"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://musgo.space/#website",
+            "url": "https://musgo.space/",
+            "name": "Musgo — Juanita López Peláez",
+            "description": "Transiciones regenerativas para organizaciones, equipos y personas.",
+            "inLanguage": "es-CO",
+            "publisher": { "@id": "https://musgo.space/#person" }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
