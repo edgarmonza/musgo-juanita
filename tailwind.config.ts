@@ -78,6 +78,8 @@ export default {
           dark: "hsl(var(--surface-dark))",
           "dark-2": "hsl(var(--surface-dark-2))",
           elevated: "hsl(var(--surface-elevated))",
+          "musgo-dark": "hsl(var(--surface-musgo-dark))",
+          "musgo-soft": "hsl(var(--surface-musgo-soft))",
         },
       },
       borderRadius: {

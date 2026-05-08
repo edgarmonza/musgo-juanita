@@ -65,7 +65,7 @@ export default function Transiciones() {
     <div className="min-h-screen">
       {/* ── 1. Hero ── */}
       <section
-        className="bg-[#142114] pt-40 pb-28 md:pb-36"
+        className="bg-surface-musgo-dark pt-40 pb-28 md:pb-36"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-5 md:px-8">
@@ -155,7 +155,7 @@ export default function Transiciones() {
 
       {/* ── 3. El Proceso — Modelo Bridges ── */}
       <section
-        className="bg-[#f0f4ef] py-24 md:py-32"
+        className="bg-surface-musgo-soft py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-5 md:px-8">
@@ -270,7 +270,7 @@ export default function Transiciones() {
 
       {/* ── 5. Esto es diferente ── */}
       <section
-        className="bg-[#f0f4ef] py-24 md:py-32"
+        className="bg-surface-musgo-soft py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-5 md:px-8">
@@ -359,7 +359,7 @@ export default function Transiciones() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="space-y-8"
             >
-              <div className="border-l-2 border-primary pl-6 space-y-4">
+              <div className="border-y border-primary/25 py-6 space-y-4">
                 <p className="text-foreground/70 font-light">
                   Gramalote — 1.000 familias. USD 120M.
                 </p>
@@ -391,7 +391,7 @@ export default function Transiciones() {
 
       {/* ── 7. CTA Final ── */}
       <section
-        className="bg-[#142114] py-28 md:py-36"
+        className="bg-surface-musgo-dark py-28 md:py-36"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">

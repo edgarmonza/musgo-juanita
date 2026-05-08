@@ -54,6 +54,10 @@
     --surface-dark-2:   114 5% 8%;   /* footer / speaker bg */
     --surface-elevated: 114 5% 11%;  /* dropdowns, cards on dark */
 
+    /* Musgo-tinted surfaces for service pages (heavier brand presence). */
+    --surface-musgo-dark:  114 30% 10%;  /* ≈ #142114 */
+    --surface-musgo-soft:  114 14% 95%;  /* ≈ #f0f4ef */
+
     /* Typography */
     --font-display: 'Bebas Neue', 'Impact', sans-serif;
     --font-sans: 'Inter', system-ui, sans-serif;

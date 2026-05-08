@@ -94,7 +94,7 @@ export default function EspaciosRegenerativos() {
     <div className="min-h-screen">
       {/* ─── 1. HERO ─── */}
       <section
-        className="bg-[#142114] pt-32 pb-24 md:pt-40 md:pb-32"
+        className="bg-surface-musgo-dark pt-32 pb-24 md:pt-40 md:pb-32"
         style={{ scrollMarginTop: "5rem" }}
       >
         <div className="max-w-5xl mx-auto px-8">
@@ -175,7 +175,7 @@ export default function EspaciosRegenerativos() {
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.15 }}
             >
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-y border-primary/25 py-6">
                 <p className="text-lg text-primary font-light italic leading-relaxed">
                   El burnout se aborda solo como una crisis individual — desde la
                   salud mental y física. Pero es un síntoma de una crisis
@@ -188,7 +188,7 @@ export default function EspaciosRegenerativos() {
       </section>
 
       {/* ─── 3. TRES APLICACIONES ─── */}
-      <section className="bg-[#f0f4ef] py-24 md:py-32">
+      <section className="bg-surface-musgo-soft py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-8">
           <motion.p
             {...fadeUp}
@@ -290,7 +290,7 @@ export default function EspaciosRegenerativos() {
       </section>
 
       {/* ─── 5. IMPACTO ─── */}
-      <section className="bg-[#f0f4ef] py-24 md:py-32">
+      <section className="bg-surface-musgo-soft py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-8">
           <motion.h2
             {...fadeUp}
@@ -354,7 +354,7 @@ export default function EspaciosRegenerativos() {
             </div>
 
             <motion.div {...fadeUp} className="space-y-6">
-              <div className="border-l-2 border-primary pl-6 space-y-4">
+              <div className="border-y border-primary/25 py-6 space-y-4">
                 <p className="text-foreground font-light">
                   Gramalote — 1.000 familias. USD 120M.
                 </p>
@@ -383,7 +383,7 @@ export default function EspaciosRegenerativos() {
       </section>
 
       {/* ─── 7. CTA FINAL ─── */}
-      <section className="bg-[#142114] py-24 md:py-32">
+      <section className="bg-surface-musgo-dark py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.h2
             {...fadeUp}

@@ -79,7 +79,7 @@ export default function Regeneracion360() {
     <div className="min-h-screen">
       {/* ── 1. Hero ── */}
       <section
-        className="bg-[#142114] pt-32 pb-24 md:pb-32 scroll-mt-24"
+        className="bg-surface-musgo-dark pt-32 pb-24 md:pb-32 scroll-mt-24"
       >
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
@@ -161,7 +161,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 3. La Diferencia ── */}
-      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-surface-musgo-soft py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
@@ -246,7 +246,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 5. Board Whisperer ── */}
-      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-surface-musgo-soft py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -343,7 +343,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 7. Para Quién ── */}
-      <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-surface-musgo-soft py-24 md:py-32 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
@@ -412,7 +412,7 @@ export default function Regeneracion360() {
               <motion.div
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: 0.1 }}
-                className="border-l-2 border-primary pl-6 space-y-4"
+                className="border-y border-primary/25 py-6 space-y-4"
               >
                 <p className="text-foreground font-light">
                   Gramalote — 1.000 familias. USD 120M.
@@ -449,7 +449,7 @@ export default function Regeneracion360() {
       </section>
 
       {/* ── 9. CTA Final ── */}
-      <section className="bg-[#142114] py-24 md:py-32 scroll-mt-24">
+      <section className="bg-surface-musgo-dark py-24 md:py-32 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <motion.h2
             {...fadeUp}
