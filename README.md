@@ -1,73 +1,41 @@
-# Welcome to your Lovable project
+# Musgo — Juanita López Peláez
 
-## Project info
+Sitio web personal de Juanita López Peláez bajo la marca **Musgo**.
+Transiciones regenerativas para organizaciones, equipos y personas.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+- **Producción**: https://musgo.space
+- **Stack**: Vite + React + TypeScript + Tailwind + shadcn/ui + Framer Motion
+- **Deploy**: Vercel (auto-deploy desde `main`)
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Desarrollo local
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev          # http://localhost:8080
+npm run build        # producción → dist/
+npm run preview      # preview de la build
+npm test             # vitest
 ```
 
-**Edit a file directly in GitHub**
+## Imágenes
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Las imágenes se sirven desde `public/img/<slug>/<width>.{webp,jpg}` con tres
+variantes responsive (640w / 1024w / 1920w) más un fallback JPG.
 
-**Use GitHub Codespaces**
+Para procesar imágenes nuevas (requiere `cwebp` + ImageMagick instalados):
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+bash scripts/optimize-images.sh
+```
 
-## What technologies are used for this project?
+El componente `<ResponsiveImage slug="..." />` se encarga de servir la variante
+adecuada según el viewport.
 
-This project is built with:
+## Deploy
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Cada push a `main` dispara un deploy automático en Vercel.
+Para forzar un deploy manual:
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```sh
+vercel --prod
+```
