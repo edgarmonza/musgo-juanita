@@ -7,14 +7,14 @@ export default function ContactoPage() {
 
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container max-w-4xl mx-auto px-8">
+        <div className="container max-w-4xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
             className="text-center space-y-6"
           >
-            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-foreground leading-none uppercase">
+            <h1 className="font-display text-foreground leading-none uppercase text-[clamp(3.5rem,11vw,7rem)]">
               Conversemos
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground font-light max-w-lg mx-auto">
@@ -26,7 +26,7 @@ export default function ContactoPage() {
 
       {/* Content: Form + Contact Info */}
       <section className="pb-24 md:pb-32">
-        <div className="container max-w-5xl mx-auto px-8">
+        <div className="container max-w-5xl mx-auto px-5 md:px-8">
           <div className="grid md:grid-cols-5 gap-16 md:gap-20">
             {/* Form */}
             <motion.div
@@ -99,7 +99,7 @@ export default function ContactoPage() {
 
                 <button
                   type="submit"
-                  className="btn-editorial rounded-full text-xs inline-flex items-center gap-2"
+                  className="btn-editorial rounded-full text-xs inline-flex items-center gap-2 min-h-[48px]"
                 >
                   Enviar mensaje
                   <ArrowRight className="w-3.5 h-3.5" />

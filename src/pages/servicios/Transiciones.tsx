@@ -68,7 +68,7 @@ export default function Transiciones() {
         className="bg-[#142114] pt-40 pb-28 md:pb-36"
         style={{ scrollMarginTop: "5rem" }}
       >
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ export default function Transiciones() {
 
       {/* ── 2. La Brecha ── */}
       <section className="bg-white py-24 md:py-32" style={{ scrollMarginTop: "5rem" }}>
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground leading-none mb-14"
@@ -158,7 +158,7 @@ export default function Transiciones() {
         className="bg-[#f0f4ef] py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -208,7 +208,7 @@ export default function Transiciones() {
 
       {/* ── 4. Círculos de Palabra ── */}
       <section className="bg-white py-24 md:py-32" style={{ scrollMarginTop: "5rem" }}>
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -273,7 +273,7 @@ export default function Transiciones() {
         className="bg-[#f0f4ef] py-24 md:py-32"
         style={{ scrollMarginTop: "5rem" }}
       >
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground leading-none mb-14"
@@ -325,7 +325,7 @@ export default function Transiciones() {
 
       {/* ── 6. Quién Facilita ── */}
       <section className="bg-white py-24 md:py-32" style={{ scrollMarginTop: "5rem" }}>
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-muted-foreground mb-4"
@@ -394,7 +394,7 @@ export default function Transiciones() {
         className="bg-[#142114] py-28 md:py-36"
         style={{ scrollMarginTop: "5rem" }}
       >
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-none"

@@ -73,6 +73,12 @@ export default {
         "light-gray": {
           DEFAULT: "#eeeeee",
         },
+        // Dark surface tokens — tinted toward brand hue for cohesion
+        surface: {
+          dark: "hsl(var(--surface-dark))",
+          "dark-2": "hsl(var(--surface-dark-2))",
+          elevated: "hsl(var(--surface-elevated))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import juanitaSmilingTable from "@/assets/juanita-smiling-table.jpg";
-import juanitaProfileWhite from "@/assets/juanita-profile-white.jpg";
-import juanitaFullGreen from "@/assets/juanita-full-green.jpg";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const temas = [
   {
@@ -32,7 +30,7 @@ export default function SpeakerPage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="pt-32 pb-24 md:pb-40">
-        <div className="max-w-5xl mx-auto px-8 space-y-24">
+        <div className="max-w-5xl mx-auto px-5 md:px-8 space-y-20 md:space-y-24">
           {/* Hero */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -41,7 +39,7 @@ export default function SpeakerPage() {
             className="space-y-8"
           >
             <p className="text-xs uppercase tracking-widest text-muted-foreground">Speaker</p>
-            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] uppercase">
+            <h1 className="font-display text-foreground leading-[0.9] uppercase text-[clamp(3rem,10vw,7rem)]">
               Charlas que mueven<br />algo adentro.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-3xl">
@@ -54,13 +52,24 @@ export default function SpeakerPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="grid md:grid-cols-3 gap-4"
+            className="grid md:grid-cols-3 gap-3 md:gap-4"
           >
             <div className="md:col-span-2 aspect-[16/10] relative overflow-hidden rounded-lg">
-              <img src={juanitaSmilingTable} alt="Juanita facilitando" className="w-full h-full object-cover object-top" />
+              <ResponsiveImage
+                slug="speaker-podium-wide"
+                alt="Juanita facilitando una charla en atril"
+                priority
+                sizes="(min-width: 768px) 66vw, 100vw"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="aspect-[4/5] md:aspect-auto relative overflow-hidden rounded-lg">
-              <img src={juanitaProfileWhite} alt="Juanita López" className="w-full h-full object-cover object-top" />
+              <ResponsiveImage
+                slug="speaker-warm-smile"
+                alt="Juanita López — sonrisa cálida durante una conversación"
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
 
@@ -132,7 +141,12 @@ export default function SpeakerPage() {
             className="grid lg:grid-cols-2 gap-12 items-center py-16 border-y border-border"
           >
             <div className="aspect-[4/5] relative overflow-hidden rounded-lg">
-              <img src={juanitaFullGreen} alt="Juanita López" className="w-full h-full object-cover object-top" />
+              <ResponsiveImage
+                slug="speaker-emphasis"
+                alt="Juanita López hablando con énfasis"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="space-y-6">
               <blockquote className="text-2xl md:text-3xl text-foreground italic leading-snug">

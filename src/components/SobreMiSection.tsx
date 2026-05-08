@@ -1,13 +1,32 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import juanitaGreenWall from "@/assets/juanita-green-wall.jpg";
+import ResponsiveImage from "./ResponsiveImage";
+
+const trayectos = [
+  {
+    label: "Sector Público",
+    detail: "Gramalote — Fondo Adaptación · USD 120M, 1.000 familias.",
+  },
+  {
+    label: "Sector Privado",
+    detail: "KPMG — Consultoría estratégica, cobertura Sudamérica.",
+  },
+  {
+    label: "Innovación Social",
+    detail: "Mundo Común — Directora · Equipo fundador. +83.000 personas impactadas.",
+  },
+  {
+    label: "Regeneración & Biodiversidad",
+    detail: "Terrasos — Estrategia de regeneración y capital natural.",
+  },
+];
 
 export default function SobreMiSection() {
   return (
     <section id="sobre" className="py-24 md:py-32 bg-muted">
-      <div className="container max-w-7xl mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container max-w-7xl mx-auto px-5 md:px-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
           {/* Image - Left Side */}
           <motion.div
@@ -15,12 +34,14 @@ export default function SobreMiSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
+            className="lg:col-span-5"
           >
-          <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
-              <img
-                src={juanitaGreenWall}
+            <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
+              <ResponsiveImage
+                slug="speaker-warm-smile"
                 alt="Juanita López Peláez"
-                className="w-full h-full object-cover object-top"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
@@ -31,65 +52,46 @@ export default function SobreMiSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="space-y-8"
+            className="lg:col-span-7 space-y-10"
           >
             <div>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Sobre Mí</p>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-none uppercase">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-5">
+                Sobre Mí
+              </p>
+              <h2 className="font-display text-foreground leading-[0.95] uppercase text-[clamp(2.25rem,5.5vw,3.75rem)]">
                 20 años conectando lo estratégico con lo humano.
               </h2>
             </div>
 
-            <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-xl">
               He operado en la intersección del cambio sistémico en tres mundos: sector público, sector privado e innovación social. Eso me dio una mirada que conecta lo estratégico con lo humano.
             </p>
 
-            {/* Bullet Points - Elegant Style */}
-            <div className="space-y-6 pt-2">
-              <div className="flex gap-4">
-                <div className="w-1 bg-primary/30 rounded-full flex-shrink-0"></div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Sector Público</p>
-                  <p className="text-muted-foreground font-light">
-                    Gramalote — Fondo Adaptación (USD 120M, 1.000 familias).
-                  </p>
+            {/* Editorial list — no side stripes, numbered + tight */}
+            <dl className="grid sm:grid-cols-2 gap-x-10 gap-y-6 pt-2">
+              {trayectos.map((item, idx) => (
+                <div key={item.label} className="flex gap-4 items-baseline">
+                  <span
+                    className="font-display text-musgo text-sm tracking-widest pt-1"
+                    aria-hidden="true"
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <dt className="font-medium text-foreground mb-1">
+                      {item.label}
+                    </dt>
+                    <dd className="text-sm text-muted-foreground font-light leading-relaxed">
+                      {item.detail}
+                    </dd>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-1 bg-primary/30 rounded-full flex-shrink-0"></div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Sector Privado</p>
-                  <p className="text-muted-foreground font-light">
-                    KPMG — Consultoría estratégica, cobertura Sudamérica.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-1 bg-primary/30 rounded-full flex-shrink-0"></div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Innovación Social</p>
-                  <p className="text-muted-foreground font-light">
-                    Mundo Común — Directora · Equipo fundador. +83.000 personas impactadas.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-1 bg-primary/30 rounded-full flex-shrink-0"></div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Regeneración & Biodiversidad</p>
-                  <p className="text-muted-foreground font-light">
-                    Terrasos — Estrategia de regeneración y capital natural.
-                  </p>
-                </div>
-              </div>
-            </div>
+              ))}
+            </dl>
 
             <Link
               to="/sobre"
-              className="inline-flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300 pt-2"
+              className="inline-flex items-center gap-2 text-musgo hover:gap-4 transition-all duration-300 pt-2 min-h-[44px]"
             >
               <span className="text-sm font-medium">Conocer mi historia</span>
               <ArrowRight className="w-4 h-4" />

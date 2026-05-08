@@ -5,8 +5,8 @@ const rightItems = ["Equipo alineado", "Energía renovada", "Coherencia real", "
 
 export default function GapSection() {
   return (
-    <section className="bg-[#0f0f0f] py-24">
-      <div className="max-w-[1120px] mx-auto px-6 lg:px-8">
+    <section className="bg-surface-dark py-24 md:py-28">
+      <div className="max-w-[1120px] mx-auto px-5 md:px-8">
         {/* Label */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -24,7 +24,7 @@ export default function GapSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-[0.95] tracking-tight text-center uppercase"
+          className="font-display text-white leading-[0.95] tracking-tight text-center uppercase text-[clamp(2.25rem,7vw,4rem)]"
         >
           Cambio no es lo mismo<br />que transición
         </motion.h2>

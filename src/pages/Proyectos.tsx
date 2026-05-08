@@ -59,7 +59,7 @@ export default function ProyectosPage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="pt-32 pb-24 md:pb-40">
-        <div className="max-w-5xl mx-auto px-8 space-y-24">
+        <div className="max-w-5xl mx-auto px-5 md:px-8 space-y-20 md:space-y-24">
           {/* Hero */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -68,7 +68,7 @@ export default function ProyectosPage() {
             className="space-y-8"
           >
             <p className="text-xs uppercase tracking-widest text-muted-foreground">Proyectos</p>
-            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] uppercase">
+            <h1 className="font-display text-foreground leading-[0.9] uppercase text-[clamp(3rem,10vw,7rem)]">
               Donde esto<br />ya sucedió.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-3xl">

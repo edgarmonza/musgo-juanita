@@ -47,6 +47,13 @@
     --dark-gray: 0 0% 21%;
     --light-gray: 0 0% 93%;
 
+    /* Dark surfaces — used for sections that are intentionally dark
+       (Hero overlay, GapSection, SpeakerSection, Footer). Tinted very
+       slightly toward the brand hue for cohesion. */
+    --surface-dark:     114 6% 6%;   /* deepest — page-level dark sections */
+    --surface-dark-2:   114 5% 8%;   /* footer / speaker bg */
+    --surface-elevated: 114 5% 11%;  /* dropdowns, cards on dark */
+
     /* Typography */
     --font-display: 'Bebas Neue', 'Impact', sans-serif;
     --font-sans: 'Inter', system-ui, sans-serif;

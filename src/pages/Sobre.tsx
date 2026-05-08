@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import juanitaStanding from "@/assets/juanita-standing.jpg";
-import juanitaSeatedBlack from "@/assets/juanita-seated-black.jpg";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const trayectoria = [
   {
@@ -40,7 +39,7 @@ export default function SobrePage() {
   return (
     <div className="min-h-screen bg-background">
       <section className="pt-32 pb-24 md:pb-40">
-        <div className="max-w-5xl mx-auto px-8 space-y-24">
+        <div className="max-w-5xl mx-auto px-5 md:px-8 space-y-20 md:space-y-24">
           {/* Hero */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -50,7 +49,7 @@ export default function SobrePage() {
           >
             <div className="space-y-8">
               <p className="text-xs uppercase tracking-widest text-muted-foreground">Sobre Mí</p>
-              <h1 className="font-display text-6xl md:text-7xl text-foreground leading-[0.9] uppercase">
+              <h1 className="font-display text-foreground leading-[0.9] uppercase text-[clamp(3.25rem,11vw,6rem)]">
                 Juanita<br />López<br />Peláez
               </h1>
               <p className="text-xl text-muted-foreground font-light leading-relaxed">
@@ -58,10 +57,12 @@ export default function SobrePage() {
               </p>
             </div>
             <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
-              <img
-                src={juanitaStanding}
+              <ResponsiveImage
+                slug="speaker-full-smile"
                 alt="Juanita López Peláez"
-                className="w-full h-full object-cover object-top"
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
@@ -121,7 +122,12 @@ export default function SobrePage() {
             transition={{ duration: 0.8 }}
             className="aspect-[21/9] relative overflow-hidden rounded-lg"
           >
-            <img src={juanitaSeatedBlack} alt="Juanita López" className="w-full h-full object-cover object-top" />
+            <ResponsiveImage
+              slug="speaker-room-wide"
+              alt="Juanita López en una sesión de facilitación"
+              sizes="100vw"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
 
           {/* Valores */}

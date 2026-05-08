@@ -74,7 +74,7 @@ export default function Header() {
           : "bg-transparent py-4"
       }`}
     >
-      <div className="container max-w-7xl mx-auto flex items-center justify-between px-8">
+      <div className="container max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8">
         {/* Logo */}
         <Link
           to="/"
@@ -123,7 +123,7 @@ export default function Header() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 backdrop-blur-md rounded-lg shadow-2xl overflow-hidden ${
                     isOverHero
-                      ? "bg-[#1a1a1a] border border-white/10"
+                      ? "bg-surface-elevated border border-white/10"
                       : "bg-background border border-border"
                   }`}
                 >
@@ -165,8 +165,9 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 -mr-2 ${menuIconColor}`}
-          aria-label="Toggle menu"
+          className={`md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 ${menuIconColor}`}
+          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? (
             <X className="w-5 h-5" />
@@ -184,17 +185,17 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden bg-[#0f0f0f]/98 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-surface-dark/98 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
-            <nav className="container py-10 flex flex-col gap-6 px-8">
+            <nav className="container py-10 flex flex-col gap-7 px-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`text-xs uppercase tracking-widest transition-colors ${
+                  className={`text-sm uppercase tracking-wider py-2 transition-colors ${
                     isActive(link.to)
                       ? "text-white"
-                      : "text-white/50 hover:text-white"
+                      : "text-white/60 hover:text-white"
                   }`}
                 >
                   {link.label}

@@ -26,7 +26,7 @@ const proyectos = [
 export default function ProyectosSection() {
   return (
     <section className="py-24 md:py-32 bg-background">
-      <div className="container max-w-7xl mx-auto px-8">
+      <div className="container max-w-7xl mx-auto px-5 md:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,7 +36,7 @@ export default function ProyectosSection() {
           className="mb-16 md:mb-20"
         >
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Proyectos</p>
-          <h2 className="font-display text-5xl md:text-6xl text-foreground max-w-3xl uppercase leading-none">
+          <h2 className="font-display text-foreground max-w-3xl uppercase leading-[0.95] text-[clamp(2.5rem,7vw,4.25rem)]">
             Donde esto<br />
             <span className="text-muted-foreground">ya sucedió.</span>
           </h2>

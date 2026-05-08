@@ -81,7 +81,7 @@ export default function Regeneracion360() {
       <section
         className="bg-[#142114] pt-32 pb-24 md:pb-32 scroll-mt-24"
       >
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-white/40 mb-6"
@@ -126,7 +126,7 @@ export default function Regeneracion360() {
 
       {/* ── 2. Más allá de no dañar ── */}
       <section className="bg-white py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground uppercase leading-none mb-12"
@@ -162,7 +162,7 @@ export default function Regeneracion360() {
 
       {/* ── 3. La Diferencia ── */}
       <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-6"
@@ -207,7 +207,7 @@ export default function Regeneracion360() {
 
       {/* ── 4. Qué Incluye ── */}
       <section className="bg-white py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -247,7 +247,7 @@ export default function Regeneracion360() {
 
       {/* ── 5. Board Whisperer ── */}
       <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <motion.p
@@ -306,7 +306,7 @@ export default function Regeneracion360() {
 
       {/* ── 6. Formatos ── */}
       <section className="bg-white py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -344,7 +344,7 @@ export default function Regeneracion360() {
 
       {/* ── 7. Para Quién ── */}
       <section className="bg-[#f0f4ef] py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground uppercase leading-none mb-12"
@@ -371,7 +371,7 @@ export default function Regeneracion360() {
 
       {/* ── 8. Quién Facilita ── */}
       <section className="bg-white py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <motion.p
@@ -450,7 +450,7 @@ export default function Regeneracion360() {
 
       {/* ── 9. CTA Final ── */}
       <section className="bg-[#142114] py-24 md:py-32 scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-white uppercase leading-none"

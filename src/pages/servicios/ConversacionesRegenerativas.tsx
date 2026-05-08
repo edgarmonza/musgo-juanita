@@ -97,7 +97,7 @@ export default function ConversacionesRegenerativas() {
         className="bg-[#142114] pt-32 pb-24 md:pt-40 md:pb-32"
         style={{ scrollMarginTop: "5rem" }}
       >
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-white/40 mb-6"
@@ -149,7 +149,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 2. LA BRECHA ─── */}
       <section className="bg-white py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground leading-none uppercase mb-12"
@@ -189,7 +189,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 3. TRES APLICACIONES ─── */}
       <section className="bg-[#f0f4ef] py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -234,7 +234,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 4. METODOLOGIA ─── */}
       <section className="bg-white py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.p
             {...fadeUp}
             className="text-xs uppercase tracking-widest text-primary mb-4"
@@ -291,7 +291,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 5. IMPACTO ─── */}
       <section className="bg-[#f0f4ef] py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl text-foreground leading-none uppercase mb-16"
@@ -328,7 +328,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 6. QUIEN FACILITA ─── */}
       <section className="bg-white py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <motion.p
@@ -387,7 +387,7 @@ export default function ConversacionesRegenerativas() {
 
       {/* ─── 7. CTA FINAL ─── */}
       <section className="bg-[#142114] py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <motion.h2
             {...fadeUp}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-none uppercase"
