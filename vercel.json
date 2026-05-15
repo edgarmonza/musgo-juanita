@@ -1,7 +1,10 @@
 {
+  "redirects": [
+    { "source": "/cesa", "destination": "/cesa/", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/branding.html", "destination": "/branding.html" },
-    { "source": "/cesa", "destination": "/cesa/index.html" },
+    { "source": "/cesa/", "destination": "/cesa/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
