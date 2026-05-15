@@ -246,16 +246,26 @@
 
   /* ───────── SLIDE 2 · BIENVENIDA ───────── */
   .s-welcome {
-    background: var(--bg-1);
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.92) 100%),
+      url('img/musgo-brotando.jpg') center/cover;
+    position: relative;
   }
-  .s-welcome .container { text-align: center; }
+  .s-welcome::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.45) 75%);
+    pointer-events: none;
+  }
+  .s-welcome .container { text-align: center; position: relative; z-index: 1; }
   .s-welcome .pre {
     font-size: 11px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: var(--muted-3);
+    color: var(--musgo);
     margin-bottom: 4rem;
   }
+  .s-welcome .display { text-shadow: 0 2px 60px rgba(0,0,0,0.5); }
 
   /* ───────── SLIDE 3 · REGLAS ───────── */
   .s-rules .container {
@@ -437,10 +447,10 @@
   }
   .s-transit .photo-full {
     position: absolute; inset: 0;
-    background-image: url('img/moss-hero.jpg');
+    background-image: url('img/musgo-vivo.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.55) saturate(1.1);
+    filter: brightness(0.5) saturate(1.15);
   }
   .s-transit .photo-full::after {
     content: '';
@@ -772,10 +782,10 @@
   }
   .s-thanks .photo-full {
     position: absolute; inset: 0;
-    background-image: url('img/moss-stream.jpg');
+    background-image: url('img/musgo-etereo.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.45) saturate(1.1);
+    filter: brightness(0.42) saturate(1.1);
   }
   .s-thanks .photo-full::after {
     content: '';
