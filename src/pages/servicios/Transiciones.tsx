@@ -361,16 +361,16 @@ export default function Transiciones() {
             >
               <div className="border-y border-primary/25 py-6 space-y-4">
                 <p className="text-foreground/70 font-light">
-                  Gramalote — 1.000 familias. USD 120M.
+                  Escucha sistémica antes de intervenir.
                 </p>
                 <p className="text-foreground/70 font-light">
-                  KPMG — Sostenibilidad Sudamérica.
+                  Espacios donde el grupo se piensa a sí mismo.
                 </p>
                 <p className="text-foreground/70 font-light">
-                  Mundo Común — Directora · Equipo fundador. +83.000 personas.
+                  Traducción entre lo estratégico y lo humano.
                 </p>
                 <p className="text-foreground/70 font-light">
-                  Terrasos — Regeneración y capital natural.
+                  Acompañamiento de tránsitos, no de destinos.
                 </p>
               </div>
               <div className="space-y-2">

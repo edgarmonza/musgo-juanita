@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ResponsiveImage from "./ResponsiveImage";
 
-const trayectos = [
+const principios = [
   {
-    label: "Sector Público",
-    detail: "Gramalote — Fondo Adaptación · USD 120M, 1.000 familias.",
+    label: "Escucha",
+    detail: "Antes de proponer, sentir lo que está vivo en el sistema.",
   },
   {
-    label: "Sector Privado",
-    detail: "KPMG — Consultoría estratégica, cobertura Sudamérica.",
+    label: "Pausa",
+    detail: "Crear espacios donde el grupo se piensa a sí mismo.",
   },
   {
-    label: "Innovación Social",
-    detail: "Mundo Común — Directora · Equipo fundador. +83.000 personas impactadas.",
+    label: "Traducción",
+    detail: "Conectar lo estratégico con lo humano, lo personal con lo sistémico.",
   },
   {
-    label: "Regeneración & Biodiversidad",
-    detail: "Terrasos — Estrategia de regeneración y capital natural.",
+    label: "Tránsito",
+    detail: "Acompañar lo que está en movimiento, sin forzar el destino.",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function SobreMiSection() {
 
             {/* Editorial list — no side stripes, numbered + tight */}
             <dl className="grid sm:grid-cols-2 gap-x-10 gap-y-6 pt-2">
-              {trayectos.map((item, idx) => (
+              {principios.map((item, idx) => (
                 <div key={item.label} className="flex gap-4 items-baseline">
                   <span
                     className="font-display text-musgo text-sm tracking-widest pt-1"

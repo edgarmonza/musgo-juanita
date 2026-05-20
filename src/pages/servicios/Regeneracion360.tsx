@@ -392,10 +392,10 @@ export default function Regeneracion360() {
                 transition={{ ...fadeUp.transition, delay: 0.1 }}
                 className="text-lg text-muted-foreground font-light leading-relaxed"
               >
-                20 años en la intersección del cambio sistémico. Consolidó la
-                práctica de Sostenibilidad y ESG en KPMG para Sudamérica. Lideró
-                el reasentamiento de una comunidad entera. Conectó +83.000
-                personas con impacto real.
+                20 años en la intersección del cambio sistémico. Procesos de
+                gran escala con comunidades. Estrategia dentro de organizaciones
+                multinacionales. Iniciativas de innovación social que llegan
+                lejos.
               </motion.p>
               <motion.p
                 {...fadeUp}
@@ -415,16 +415,16 @@ export default function Regeneracion360() {
                 className="border-y border-primary/25 py-6 space-y-4"
               >
                 <p className="text-foreground font-light">
-                  Gramalote — 1.000 familias. USD 120M.
+                  Escucha sistémica antes de intervenir.
                 </p>
                 <p className="text-foreground font-light">
-                  KPMG — Sostenibilidad Sudamérica.
+                  Espacios donde el grupo se piensa a sí mismo.
                 </p>
                 <p className="text-foreground font-light">
-                  Mundo Común — Directora · Equipo fundador. +83.000 personas.
+                  Traducción entre lo estratégico y lo humano.
                 </p>
                 <p className="text-foreground font-light">
-                  Terrasos — Regeneración y capital natural.
+                  Acompañamiento de tránsitos, no de destinos.
                 </p>
               </motion.div>
 

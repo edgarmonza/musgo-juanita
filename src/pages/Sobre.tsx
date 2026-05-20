@@ -3,29 +3,29 @@ import ResponsiveImage from "@/components/ResponsiveImage";
 
 const trayectoria = [
   {
-    period: "2012 — 2015",
-    title: "Gramalote — Fondo Adaptación",
-    description: "Lideré el reasentamiento de una comunidad entera. USD 120M de inversión, 1.000 familias. Ahí entendí que el cambio real no es solo infraestructura — es acompañar a las personas en su transición.",
+    period: "Primeros años",
+    title: "Acompañar comunidades",
+    description: "Procesos de reasentamiento de gran escala. Ahí entendí que el cambio real no es solo infraestructura — es acompañar a las personas en su transición.",
   },
   {
-    period: "2015 — 2020",
-    title: "KPMG — Sostenibilidad Sudamérica",
-    description: "Consolidé la práctica de Sostenibilidad y ESG para la región. Vi de cerca la brecha: organizaciones con estrategias impecables hacia afuera, pero desconectadas adentro.",
+    period: "Una década en consultoría",
+    title: "Sostenibilidad regional",
+    description: "Construir desde dentro la práctica de sostenibilidad y ESG en organizaciones multinacionales. Vi la brecha de cerca: estrategias impecables hacia afuera, desconexión adentro.",
   },
   {
-    period: "2018 — presente",
-    title: "Mundo Común — Directora · Equipo Fundador",
-    description: "+83.000 personas conectadas con iniciativas de impacto real. La prueba de que la innovación social se construye desde la comunidad, no desde el escritorio.",
+    period: "Innovación social",
+    title: "Construir desde la comunidad",
+    description: "Dirigir iniciativas de impacto que llegan lejos. La prueba de que algo se construye desde la comunidad, no desde el escritorio.",
   },
   {
-    period: "2022 — presente",
-    title: "Terrasos — Regeneración & Capital Natural",
-    description: "Estrategia de regeneración y biodiversidad. Donde la sostenibilidad deja de ser un reporte y se convierte en impacto real sobre los ecosistemas.",
+    period: "Regeneración",
+    title: "Capital natural",
+    description: "Estrategia con organizaciones donde la sostenibilidad deja de ser un reporte y se convierte en impacto real sobre los ecosistemas.",
   },
   {
-    period: "2024 — presente",
-    title: "Musgo — Transiciones Regenerativas",
-    description: "Todo converge aquí. 20 años de experiencia destilados en una práctica que cierra la brecha entre lo que las organizaciones dicen y lo que viven.",
+    period: "Hoy",
+    title: "Musgo",
+    description: "Todo converge aquí. 20 años destilados en una práctica que cierra la brecha entre lo que las organizaciones dicen y lo que viven.",
   },
 ];
 

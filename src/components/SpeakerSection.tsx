@@ -24,8 +24,7 @@ export default function SpeakerSection() {
           </div>
           <div className="md:col-span-5 md:text-right">
             <p className="text-sm md:text-base text-white/60 font-light leading-relaxed max-w-md md:ml-auto">
-              Más de <span className="font-display text-musgo-light text-2xl tracking-wider align-baseline">83.000</span>{" "}
-              personas alcanzadas a través de Mundo Común y plataformas de impacto.
+              Una conversación bien diseñada cambia algo adentro. Ese es el oficio.
             </p>
           </div>
         </motion.div>
