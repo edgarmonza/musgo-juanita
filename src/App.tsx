@@ -14,7 +14,6 @@ const ConversacionesRegenerativas = lazy(() => import("./pages/servicios/Convers
 const Regeneracion360 = lazy(() => import("./pages/servicios/Regeneracion360"));
 const Transiciones = lazy(() => import("./pages/servicios/Transiciones"));
 const SpeakerPage = lazy(() => import("./pages/Speaker"));
-const ProyectosPage = lazy(() => import("./pages/Proyectos"));
 const SobrePage = lazy(() => import("./pages/Sobre"));
 const ContactoPage = lazy(() => import("./pages/Contacto"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -49,7 +48,7 @@ const App = () => (
               <Route path="/servicios/regeneracion-360" element={<Regeneracion360 />} />
               <Route path="/servicios/transiciones" element={<Transiciones />} />
               <Route path="/speaker" element={<SpeakerPage />} />
-              <Route path="/proyectos" element={<ProyectosPage />} />
+              <Route path="/proyectos" element={<Navigate to="/sobre" replace />} />
               <Route path="/sobre" element={<SobrePage />} />
               <Route path="/contacto" element={<ContactoPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

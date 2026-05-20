@@ -27,8 +27,8 @@ export default function Footer() {
             <Link to="/speaker" className="block text-sm text-white/65 hover:text-white transition-colors duration-300 py-1">
               Speaker
             </Link>
-            <Link to="/proyectos" className="block text-sm text-white/65 hover:text-white transition-colors duration-300 py-1">
-              Proyectos
+            <Link to="/contacto" className="block text-sm text-white/65 hover:text-white transition-colors duration-300 py-1">
+              Contacto
             </Link>
           </div>
 
