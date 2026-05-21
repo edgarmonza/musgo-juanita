@@ -347,9 +347,10 @@ export default function ConversacionesRegenerativas() {
                 {...fadeUp}
                 className="text-lg text-muted-foreground font-light leading-relaxed"
               >
-                20 años en la intersección del cambio sistémico. Sector público,
-                sector privado, innovación social. Traemos una mirada que
-                conecta lo estratégico con lo humano.
+                20 años en la intersección del cambio sistémico. Esa frontera
+                donde lo que se decide afuera tiene que volverse experiencia
+                adentro. Traemos una mirada que conecta lo estratégico con lo
+                humano.
               </motion.p>
             </div>
 

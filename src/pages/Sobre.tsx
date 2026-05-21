@@ -25,7 +25,7 @@ export default function SobrePage() {
                 Juanita<br />López<br />Peláez
               </h1>
               <p className="text-xl text-muted-foreground font-light leading-relaxed">
-                He pasado 20 años en la intersección del cambio sistémico. Sector público, sector privado, innovación social. Eso me dio una mirada que conecta lo estratégico con lo humano.
+                He pasado 20 años en la intersección del cambio sistémico. Esa frontera donde lo que se decide afuera tiene que volverse experiencia adentro. Eso me dio una mirada que conecta lo estratégico con lo humano.
               </p>
             </div>
             <div className="aspect-[3/4] relative overflow-hidden rounded-lg">

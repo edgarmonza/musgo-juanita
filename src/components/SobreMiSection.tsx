@@ -64,7 +64,7 @@ export default function SobreMiSection() {
             </div>
 
             <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-xl">
-              He operado en la intersección del cambio sistémico en tres mundos: sector público, sector privado e innovación social. Eso me dio una mirada que conecta lo estratégico con lo humano.
+              He operado en la intersección del cambio sistémico. Esa frontera donde lo que se decide afuera tiene que volverse experiencia adentro. Eso me dio una mirada que conecta lo estratégico con lo humano.
             </p>
 
             {/* Editorial list — no side stripes, numbered + tight */}
