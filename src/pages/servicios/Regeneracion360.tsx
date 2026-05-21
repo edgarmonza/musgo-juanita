@@ -392,19 +392,9 @@ export default function Regeneracion360() {
                 transition={{ ...fadeUp.transition, delay: 0.1 }}
                 className="text-lg text-muted-foreground font-light leading-relaxed"
               >
-                20 años en la intersección del cambio sistémico. Procesos de
-                gran escala con comunidades. Estrategia dentro de organizaciones
-                multinacionales. Iniciativas de innovación social que llegan
-                lejos.
-              </motion.p>
-              <motion.p
-                {...fadeUp}
-                transition={{ ...fadeUp.transition, delay: 0.15 }}
-                className="text-lg text-muted-foreground font-light leading-relaxed mt-4"
-              >
-                Sector público, sector privado, innovación social. Una mirada
-                que conecta lo estratégico con lo humano — y la convicción de
-                que las organizaciones pueden operar como sistemas vivos.
+                Una mirada que conecta lo estratégico con lo humano — y la
+                convicción de que las organizaciones pueden operar como sistemas
+                vivos.
               </motion.p>
             </div>
 

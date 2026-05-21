@@ -1,34 +1,6 @@
 import { motion } from "framer-motion";
 import ResponsiveImage from "@/components/ResponsiveImage";
 
-const trayectoria = [
-  {
-    period: "Primeros años",
-    title: "Acompañar comunidades",
-    description: "Procesos de reasentamiento de gran escala. Ahí entendí que el cambio real no es solo infraestructura — es acompañar a las personas en su transición.",
-  },
-  {
-    period: "Una década en consultoría",
-    title: "Sostenibilidad regional",
-    description: "Construir desde dentro la práctica de sostenibilidad y ESG en organizaciones multinacionales. Vi la brecha de cerca: estrategias impecables hacia afuera, desconexión adentro.",
-  },
-  {
-    period: "Innovación social",
-    title: "Construir desde la comunidad",
-    description: "Dirigir iniciativas de impacto que llegan lejos. La prueba de que algo se construye desde la comunidad, no desde el escritorio.",
-  },
-  {
-    period: "Regeneración",
-    title: "Capital natural",
-    description: "Estrategia con organizaciones donde la sostenibilidad deja de ser un reporte y se convierte en impacto real sobre los ecosistemas.",
-  },
-  {
-    period: "Hoy",
-    title: "Musgo",
-    description: "Todo converge aquí. 20 años destilados en una práctica que cierra la brecha entre lo que las organizaciones dicen y lo que viven.",
-  },
-];
-
 const valores = [
   { title: "Coherencia", description: "Lo que digo, lo que hago y lo que soy están alineados." },
   { title: "Regeneración", description: "No se trata de no dañar. Se trata de generar vida." },
@@ -82,37 +54,6 @@ export default function SobrePage() {
               Esta pregunta guía todo lo que hago.
             </p>
           </motion.blockquote>
-
-          {/* Trayectoria */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="space-y-12"
-          >
-            <h2 className="font-display text-4xl md:text-5xl text-foreground uppercase leading-none">Trayectoria</h2>
-            <div className="space-y-0">
-              {trayectoria.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className="py-8 border-b border-border grid md:grid-cols-12 gap-4 md:gap-8"
-                >
-                  <div className="md:col-span-3">
-                    <p className="text-sm text-muted-foreground font-light">{item.period}</p>
-                  </div>
-                  <div className="md:col-span-9 space-y-3">
-                    <h3 className="font-display text-2xl text-foreground uppercase leading-none">{item.title}</h3>
-                    <p className="text-muted-foreground font-light leading-relaxed">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
           {/* Photo break */}
           <motion.div
