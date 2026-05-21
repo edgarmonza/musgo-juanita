@@ -34,7 +34,7 @@ export default function ResponsiveImage({
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding={priority ? "sync" : "async"}
-        fetchPriority={priority ? "high" : "auto"}
+        {...{ fetchpriority: priority ? "high" : "auto" }}
         className={className}
         style={composedStyle}
         {...rest}

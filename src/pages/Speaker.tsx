@@ -65,26 +65,6 @@ export default function SpeakerPage() {
             </div>
           </motion.div>
 
-          {/* Stats — integrated typographic row, no big metric cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="grid grid-cols-3 gap-6 md:gap-12 py-12 md:py-14 border-y border-border"
-          >
-            {[
-              { number: "+83K", label: "Personas impactadas" },
-              { number: "3", label: "Sectores de experiencia" },
-              { number: "20", label: "Años de trayectoria" },
-            ].map((stat) => (
-              <div key={stat.label} className="space-y-2">
-                <p className="font-display text-4xl md:text-6xl text-musgo uppercase leading-none">{stat.number}</p>
-                <p className="text-xs md:text-sm text-muted-foreground font-light uppercase tracking-wider">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
           {/* En acción — editorial gallery, three vertical frames with captions */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
