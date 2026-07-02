@@ -30,7 +30,7 @@ export default function SobrePage() {
             </div>
             <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
               <ResponsiveImage
-                slug="speaker-full-smile"
+                slug="juanita-full-green"
                 alt="Juanita López Peláez"
                 priority
                 sizes="(min-width: 1024px) 40vw, 100vw"

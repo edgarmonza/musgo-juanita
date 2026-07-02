@@ -26,12 +26,6 @@ const formatos = [
   { title: "Panel / Conversatorio", duration: "Flexible", description: "Diálogo abierto con otros speakers o con el público." },
 ];
 
-const enAccion = [
-  { slug: "speaker-mid-gesture", alt: "Juanita López en gesto medio durante una intervención", caption: "Manos que acompañan la palabra" },
-  { slug: "speaker-listening", alt: "Juanita López en escucha activa frente a su atril", caption: "Escucha antes de responder" },
-  { slug: "speaker-full-smile", alt: "Juanita López sonriendo en plano completo", caption: "Lo personal sostiene lo estratégico" },
-];
-
 export default function SpeakerPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -56,50 +50,14 @@ export default function SpeakerPage() {
             </div>
             <div className="lg:col-span-5 aspect-[4/5] relative overflow-hidden rounded-lg">
               <ResponsiveImage
-                slug="speaker-hands-open"
-                alt="Juanita López con las manos abiertas durante una conversación"
+                slug="juanita-closeup-speaker"
+                alt="Retrato de Juanita López Peláez"
                 priority
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
-
-          {/* En acción — editorial gallery, three vertical frames with captions */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="space-y-8 md:space-y-10"
-            aria-labelledby="speaker-en-accion"
-          >
-            <header className="flex items-end justify-between gap-6">
-              <h2 id="speaker-en-accion" className="font-display text-3xl md:text-4xl text-foreground uppercase leading-none">
-                En acción
-              </h2>
-              <p className="text-xs md:text-sm text-muted-foreground font-light hidden sm:block">
-                Sesión Bogotá · Abril 2026
-              </p>
-            </header>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5">
-              {enAccion.map((photo) => (
-                <figure key={photo.slug} className="space-y-3">
-                  <div className="aspect-[3/4] relative overflow-hidden rounded-md">
-                    <ResponsiveImage
-                      slug={photo.slug}
-                      alt={photo.alt}
-                      sizes="(min-width: 640px) 30vw, 100vw"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <figcaption className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </motion.section>
 
           {/* Temas */}
           <motion.section

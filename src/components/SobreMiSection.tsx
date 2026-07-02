@@ -38,7 +38,7 @@ export default function SobreMiSection() {
           >
             <div className="aspect-[3/4] relative overflow-hidden rounded-lg">
               <ResponsiveImage
-                slug="speaker-warm-smile"
+                slug="juanita-standing"
                 alt="Juanita López Peláez"
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="w-full h-full object-cover"

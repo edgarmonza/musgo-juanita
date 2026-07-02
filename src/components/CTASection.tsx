@@ -8,7 +8,7 @@ export default function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <ResponsiveImage
-          slug="speaker-listening"
+          slug="juanita-thoughtful"
           alt=""
           aria-hidden="true"
           sizes="100vw"

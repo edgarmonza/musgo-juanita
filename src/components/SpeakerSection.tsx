@@ -51,7 +51,8 @@ export default function SpeakerSection() {
             </div>
           </motion.div>
 
-          <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
+          {/* En móvil solo se muestra la foto principal — feedback Juanita jul 2026 */}
+          <div className="hidden md:grid md:col-span-4 md:grid-cols-1 md:gap-4">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
