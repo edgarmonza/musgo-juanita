@@ -12,8 +12,8 @@ const servicios = [
     description:
       "Facilito las conversaciones que los equipos necesitan pero nunca tienen. Escucha real, conexión profunda y la claridad que sale cuando la gente para y se mira a los ojos.",
     link: "/servicios/conversaciones-regenerativas",
-    image: "speaker-warm-smile",
-    imageAlt: "Juanita facilitando una conversación regenerativa",
+    image: "juanita-smiling-table",
+    imageAlt: "Juanita López sonriendo en una mesa de conversación",
   },
   {
     number: "02",
